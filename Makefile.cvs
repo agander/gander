@@ -1,0 +1,9 @@
+default: all
+
+#	aclocal
+#	autoheader
+#	automake
+#	autoconf
+
+all:
+	autoreconf --force --verbose --install

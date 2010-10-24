@@ -1,0 +1,108 @@
+#!/bin/bash
+
+# $Id: $
+
+VERSION=0.0.2
+PROGNAME="$(basename ${0})"
+
+function usage() {
+  cat <<EOF >&2
+Usage: ${PROGNAME} [-d directories-to-exclude -y dry-run -s stats -h help -v version ]
+
+    directories-to-exclude The list of 'include' directories you wish to 
+                           exclude from the ctags processing. Each should be 
+                           seperated by '|'.
+    stats                  Statistics of the ctags run will be requested.
+    dry-run                Commands will be displayed but not executed.
+    help                   This message.
+    version                Script version.
+EOF
+}
+
+DEBUG_SET=0
+CDEED=0
+
+if [ -n "${DEBUG}" ]
+then
+    set -x
+    DEBUG_SET=1
+fi
+
+if [ ${#} -eq 0 ]
+then
+    usage
+    printf "args: %s\n" "${@}"
+    exit 1
+fi
+
+#declare FIND_CMD="find / -name include -type d 2> /dev/null | "
+#declare FIND_CMD="find /usr/include -name include -type d 2> /dev/null | "
+declare FIND_CMD="locate \"/include/\" 2> /dev/null | "
+declare CTAGS_CMD="ctags -L- -R "
+declare DIRS2_PROCESS=""
+declare EGREPV_CMD="egrep -v "
+declare STATS=0
+declare DRY_RUN=0
+declare PY_NET_DIRS_CMD="getCtagsDirs.py | "
+
+while getopts "d:syhv" OPTION
+do
+  case ${OPTION} in
+    d     ) DIRS2_PROCESS=${OPTARG};;
+    s     ) STATS=1;;
+    y     ) DRY_RUN=1;;
+    h     ) usage && exit 1;;
+    v     ) printf "%s: %s\n" "${PROGNAME}" "${VERSION}" && exit 0;;
+    *     ) ;;   # DEFAULT
+  esac
+done
+
+CURR_WD=${PWD}
+if [ ! "$(basename "${CURR_WD}")" == ".vim" ]
+then
+    cd ${HOME}/.vim
+    printf "%s\n" ">>> COMMENT: Moving to ~/.vim"
+    CDEED=1
+fi
+
+
+
+if [ -n "${DIRS2_PROCESS}" ]
+then
+    EGREPV_CMD="${EGREPV_CMD} '${DIRS2_PROCESS}' | "
+else
+    EGREPV_CMD=""
+fi
+
+
+if [ ${STATS} -eq 1 ]
+then
+    #CTAGS_CMD="${CTAGS_CMD} --totals=yes "
+    CTAGS_CMD="${CTAGS_CMD/ctags /ctags -x --totals=yes }"
+fi
+
+
+declare WHOLE_CMD="${FIND_CMD} ${EGREPV_CMD} ${PY_NET_DIRS_CMD} ${CTAGS_CMD}"
+
+
+if [ ${DRY_RUN} -eq 1 ]
+then
+    echo ">>> COMMENT: Commands will be:"
+    echo "[ -s tags.last ] && rm -f tags.last"
+    echo "mv tags tags.last"
+    echo "eval \"${WHOLE_CMD}\""
+else
+    if [ -s tags ]
+    then
+        [ -s tags.last ] && rm -f tags.last
+        mv tags tags.last
+    fi
+    eval "${WHOLE_CMD}"
+fi
+
+if [ ${CDEED} -eq 1 ]
+then
+    cd ${CURR_WD}
+    printf ">>> COMMENT: Moving back to %s\n" ${CURR_WD}
+fi
+
