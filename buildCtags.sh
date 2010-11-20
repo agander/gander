@@ -2,7 +2,7 @@
 
 # $Id: $
 
-VERSION=0.0.2
+VERSION="$(m4 -I ~/share/autom4te getM4Version.m4)"
 PROGNAME="$(basename ${0})"
 
 function usage() {
@@ -38,7 +38,7 @@ fi
 #declare FIND_CMD="find / -name include -type d 2> /dev/null | "
 #declare FIND_CMD="find /usr/include -name include -type d 2> /dev/null | "
 declare FIND_CMD="locate \"/include/\" 2> /dev/null | "
-declare CTAGS_CMD="ctags -L- -R "
+declare CTAGS_CMD="ctags -L- -R −−extra=+q"
 declare DIRS2_PROCESS=""
 declare EGREPV_CMD="egrep -v "
 declare STATS=0
