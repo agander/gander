@@ -23,6 +23,8 @@ int main( int argc, char **argv )
         while( std::cin.ignore( ) )
         {
             bytes_read += std::cin.gcount( );
+            //DbgOutput()(__FILE__, __PRETTY_FUNCTION__, __LINE__);
+            DbgOutput()(__FILE__, __func__, __LINE__);
         }
         std::cout << bytes_read;
     }
