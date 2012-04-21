@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Set debugging.
-[ -n "${DEBUG}" ] && set -x
+[[ -n "${DEBUG}" ]] && set -x
 
 for DIR in ~/.thumbnails
 do
     FILES_FOUND=($(find ${DIR} -name '*' -type f))
     [ -n "${DEBUG}" ]  && find ${DIR} -name '*' -type f
-    printf "%s has %d files.\n" ${DIR} ${#FILES_FOUND}
-    if [ ${#FILES_FOUND} -gt 0 ]
+    printf "%s has %d files.\n" ${DIR} ${#FILES_FOUND[*]}
+    if [ ${#FILES_FOUND[*]} -gt 0 ]
     then
         find ${DIR} -name '*' -type f -exec rm -f {} \;
     fi
@@ -19,7 +19,7 @@ do
     #SYS_SOL_FOUND=($(find ${DIR} -name 'settings.sol' -type f | grep -FzZ 'flashplayer/sys/settings.sol'))
     FILES_FOUND=($(find ${DIR} -name '*' -type f))
     SYS_SOL_FOUND="$(locate 'flashplayer/sys/settings.sol')"
-    if [ ${#FILES_FOUND} -gt 1 ]
+    if [ ${#FILES_FOUND[*]} -gt 1 ]
     then
         if [ -n "${SYS_SOL_FOUND}" ]
         then

@@ -1,6 +1,7 @@
 #include <cstring>
 #include <iostream>
 #include <limits>
+#include "dbgoutput.hpp"
 
 //  VERSION % 100 is the patch level
 //  VERSION / 100 % 1000 is the minor version

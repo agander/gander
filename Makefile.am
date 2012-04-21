@@ -26,6 +26,9 @@ EXTRA_DIST  = gander.hpp
 
 DISTCLEANFILES =  .deps/*.Po
 
+bin_SCRIPTS	=	buildCtags
+BUILDCTAGSSOURCES	=	buildCtags.sh.in
+
 #TESTS =   "$(bin_PROGRAMS) a=b c=d"
 
 # Not sure I need these ...?
@@ -72,7 +75,7 @@ TESTS = $(check_PROGRAMS)
 # Which was found at:
 # http://www.linuxfocus.org/English/November2003/article309.shtml#309lfindex7
 # Which is how the following was generated:
-dist_man_MANS = test_tutorial.3
+#dist_man_MANS = test_tutorial.3
 
 
 

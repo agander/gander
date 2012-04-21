@@ -1,0 +1,63 @@
+%define name @PACKAGE_TARNAME@
+
+Name: @PACKAGE_TARNAME@
+Summary: General include files, 
+Group: Utilities
+Version: @VERSION@
+Release: @RELEASE@
+License: GPL
+#BuildHost: %{_hostname}
+
+Source: @PACKAGE_TARNAME@-@VERSION@.tar.gz
+URL: git//agander/PROJ/@PACKAGE_TARNAME@
+
+BuildRoot: %{_tmppath}/%{name}-root
+Prefix: %{_prefix}
+
+Provides: %{name} = %{version}-%{release}
+
+%description
+Program to find executables within the current ${PATH} which contain the text supplied arguements.
+
+%prep
+%setup
+
+%build
+#%configure --prefix %{_prefix} --with-boost=@BOOST_PATH@ 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
+%configure --prefix %{_prefix} 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
+#%configure @DISTCHECK_CONFIGURE_FLAGS@
+make LDFLAGS+="-Wl,--build-id"
+make check
+
+%install
+%makeinstall LDFLAGS+="-Wl,--build-id"
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%_bindir/%{name}
+
+#%files -n %{name}-devel
+#%defattr(-,root,root)
+#%_libdir/pkgconfig/libmylogin.pc
+#%_includedir/mylogin_class.hpp
+
+#%doc AUTHORS ChangeLog COPYING INSTALL NEWS README
+##%_defaultdocdir %{_prefix}/share/doc/%{name}
+#%docdir %{_prefix}/share/doc/%{name}/AUTHORS
+#%docdir %{_prefix}/share/doc/%{name}/ChangeLog
+#%docdir %{_prefix}/share/doc/%{name}/COPYING
+#%docdir %{_prefix}/share/doc/%{name}/INSTALL
+#%docdir %{_prefix}/share/doc/%{name}/NEWS
+#%docdir %{_prefix}/share/doc/%{name}/README
+##%docdir %/AUTHORS
+##%docdir/ChangeLog
+##%docdir/COPYING
+##%docdir/INSTALL
+##%docdir/NEWS
+##%docdir/README
+
+%changelog
+

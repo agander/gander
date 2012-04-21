@@ -23,6 +23,7 @@ AC_LANG_CPLUSPLUS
 # Checks for libraries.
 #AC_CHECK_LIB([xerces-c],[main])
 
+AC_PATH_PROGS([BASH], [bash])
 
 # Checks for header files.
 # Ensure that 'AC_LANG_CPLUSPLUS' is defined before these
@@ -112,10 +113,22 @@ AX_BOOST_WSERIALIZATION
 DISTCHECK_CONFIGURE_FLAGS="${ac_configure_args}"
 AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
 
+# RPM vars. Assumes that ~/.rpmmacros is defined and associated directory structure
+RPM_BUILD_DIR=$(rpm --eval "%{_builddir}")
+AC_SUBST([RPM_BUILD_DIR])
+
+RPM_SOURCE_DIR=$(rpm --eval "%{_sourcedir}")
+AC_SUBST([RPM_SOURCE_DIR])
+
+#RPM_INSTALL_PREFIX=@prefix@
+#RPM_INSTALL_PREFIX=$(RPM_INSTALL_PREFIX)
+AC_SUBST([RPM_INSTALL_PREFIX0])
+AC_SUBST([RELEASE_NUMBER], [1])
+AC_SUBST([RELEASE], [1])
 AC_CONFIG_FILES([
-   Makefile
+    Makefile
+    gander.spec
 ])
-#   gander.spec
 #   gander.pc
 #   tests/Makefile
 #   tests/atlocal
@@ -123,19 +136,3 @@ AC_CONFIG_FILES([
 AC_OUTPUT
 
 
-AX_BOOST
-AX_BOOST_ASIO
-AX_BOOST_BASE
-AX_BOOST_DATE_TIME
-AX_BOOST_FILESYSTEM
-AX_BOOST_IOSTREAMS
-AX_BOOST_PROGRAM_OPTIONS
-AX_BOOST_PYTHON
-AX_BOOST_REGEX
-AX_BOOST_SERIALIZATION
-AX_BOOST_SIGNALS
-AX_BOOST_SYSTEM
-AX_BOOST_TEST_EXEC_MONITOR
-AX_BOOST_THREAD
-AX_BOOST_UNIT_TEST_FRAMEWORK
-AX_BOOST_WSERIALIZATION
