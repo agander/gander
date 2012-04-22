@@ -1,5 +1,5 @@
 
-# $Id: Makefile.am 571 2010-06-19 17:39:26Z gander $
+# $Id: Makefile.am 571 2010-06-19 17:39:26Z length $
 
 AUTOMAKE_OPTIONS = gnu
 
@@ -7,27 +7,41 @@ ACLOCAL_AMFLAGS   =  -I m4
 
 #SUBDIRS = config po lib data src doc tests
 
-INCLUDES = -I$(top_srcdir) $(LIBMYSQLPP_CFLAGS)
-LIBS		= $(LIBMYSQLPP_LIBS)
+INCLUDES = -I$(top_srcdir) $(GLIBMM_CFLAGS)
+LIBS		= $(GLIBMM_LIBS)
 
-bin_PROGRAMS   =  gander
+bin_PROGRAMS   =  length
 
-gander_SOURCES   =  gander.cpp gander.hpp
+length_SOURCES   =  length.cpp length.hpp
 
-#gander_CPPFLAGS = -DDEBUG -ggdb -D__USE_STD_IOSTREAM 
+#length_CPPFLAGS = -DDEBUG -ggdb -D__USE_STD_IOSTREAM 
 
-#gander_LDFLAGS = -lxerces-c
+#length_LDFLAGS = -lxerces-c
 
-#gander_CXXFLAGS = -pthread $(LIBGLADEMM_CFLAGS) $(LIBMYSQLPP_CFLAGS)
-#gander_LDADD    = -L/usr/local/lib $(LIBGLADEMM_LIBS) $(LIBMYSQLPP_LIBS)
-#gander_LDFLAGS  = -lmylogin
+length_CPPFLAGS = $(BOOST_CPPFLAGS)
+length_CXXFLAGS = -pthread $(GLIBMM_CFLAGS)
+length_LDADD    =  $(BOOST_PROGRAM_OPTIONS_LIB) $(GLIBMM_LIBS)
+length_LDFLAGS  = $(BOOST_LDFLAGS)
 
-EXTRA_DIST  = gander.hpp
+EXTRA_DIST  = length.hpp dbgoutput.hpp
 
 DISTCLEANFILES =  .deps/*.Po
 
-bin_SCRIPTS	=	buildCtags
-BUILDCTAGSSOURCES	=	buildCtags.sh.in
+dist_bin_SCRIPTS	=	buildCtags
+BUILDCTAGSSOURCES	=	buildCtags.in
+CLEANFILES = $(dist_bin_SCRIPTS)
+
+do_subst = sed -e 's,[@]datadir[@],$(datadir),g' \
+           -e 's,[@]PYTHON[@],$(PYTHON),g' \
+           -e 's,[@]BASH[@],$(BASH),g' \
+           -e 's,[@]PERL[@],$(PERL),g' \
+           -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
+           -e 's,[@]VERSION[@],$(VERSION),g'
+     
+#buildCtags: buildCtags.in Makefile
+#	$(do_subst) < $(srcdir)/buildCtags.in > buildCtags
+#	chmod +x buildCtags
+
 
 #TESTS =   "$(bin_PROGRAMS) a=b c=d"
 
@@ -38,10 +52,10 @@ BUILDCTAGSSOURCES	=	buildCtags.sh.in
 
 #lib_LTLIBRARIES = libmylogin.la
 #libmylogin_la_SOURCES  = mylogin_class.hpp mylogin_class.cpp split.hpp
-#libmylogin_la_CXXFLAGS = $(LIBMYSQLPP_CFLAGS) -m64 -mtune=k8
+#libmylogin_la_CXXFLAGS = $(GLIBMM_CFLAGS) -m64 -mtune=k8
 ##libmylogin_la_LIBADD    = -lboost_filesystem
 ##libmylogin_la_LDFLAGS  = -version-info 1:0 -lmysqlpp -lmysqlclient_r
-#libmylogin_la_LDFLAGS  = -version-info 1:0 $(LIBMYSQLPP_LIBS)
+#libmylogin_la_LDFLAGS  = -version-info 1:0 $(GLIBMM_LIBS)
 
 
 #pkgincludedir = $(includedir)
@@ -58,14 +72,15 @@ BUILDCTAGSSOURCES	=	buildCtags.sh.in
 
 #MYLOGIN_LIB = $(top_builddir)/libmylogin.la
 
-check_PROGRAMS = gander
-
-TESTS = $(check_PROGRAMS)
+check_PROGRAMS = length
+check_SCRIPTS	=	buildCtags
+TESTS = $(check_PROGRAMS) \
+		$(check_SCRIPTS)
 
 #basic_SOURCES  =  basic.cpp
-#basic_CXXFLAGS = $(LIBMYSQLPP_CFLAGS) -m64 -mtune=k8
+#basic_CXXFLAGS = $(GLIBMM_CFLAGS) -m64 -mtune=k8
 #basic_LDADD =  -L$(top_builddir)
-#basic_LDFLAGS =  $(LIBMYSQLPP_LIBS) $(top_builddir)/libmylogin.la
+#basic_LDFLAGS =  $(GLIBMM_LIBS) $(top_builddir)/libmylogin.la
 
 # Man config
 # Notes on the man/groff style are at:

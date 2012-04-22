@@ -1,6 +1,6 @@
 
-#ifndef FACPP_HPP
-#define FACPP_HPP 1
+#ifndef DBGOUTPUT_HPP
+#define DBGOUTPUT_HPP 1
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>

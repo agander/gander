@@ -9,6 +9,7 @@ AC_CONFIG_SRCDIR([gander.cpp])
 AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
+AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -34,9 +35,9 @@ AC_CHECK_HEADER([vector])
 AC_CHECK_HEADER([algorithm])
 AC_CHECK_HEADER([string])
 
-#PKG_CHECK_MODULES(LIBMYSQLPP, libmysqlpp >= 1.7.26)
-#AC_SUBST(LIBMYSQLPP_CFLAGS)
-#AC_SUBST(LIBMYSQLPP_LIBS)
+PKG_CHECK_MODULES([GLIBMM], [glibmm-2.4 >= 2.30.0 gthread-2.0 >= 2.30.0])
+AC_SUBST([GLIBMM_CFLAGS])
+AC_SUBST([GLIBMM_LIBS])
 
 # Checks for typedefs, structures, and compiler characteristics.
 #AC_C_CONST
@@ -78,10 +79,10 @@ AC_ARG_ENABLE(debug,
 
 dnl Checks for libraries
 if [ ! test "x$enable_debug" != "xyes"]; then
-  AC_DEFINE(DEBUG, 1, [Define to enable debug build: '-ggdb3 -O0'])
+  AC_DEFINE(DEBUG, 1, [Define to enable debug build: '-gdwarf-2 -O0'])
   AC_SUBST(DEBUG_CFLAGS)
   AC_SUBST(DEBUG_LIBS)
-  CXXFLAGS="-Wall -ggdb3 -O0 -m64 -mtune=k8"
+  CXXFLAGS="-Wall -gdwarf-2 -O0 -m64 -mtune=k8"
   AC_MSG_RESULT(yes)
 else
   AC_MSG_RESULT(no)
@@ -92,21 +93,21 @@ else
   CXXFLAGS="-Wall -O3 -m64 -mtune=k8"
 fi
 
-AX_BOOST_BASE([1.37])
-AX_BOOST_ASIO
-AX_BOOST_DATE_TIME
-AX_BOOST_FILESYSTEM
-AX_BOOST_IOSTREAMS
+AX_BOOST_BASE([1.47])
+#AX_BOOST_ASIO
+#AX_BOOST_DATE_TIME
+#AX_BOOST_FILESYSTEM
+#AX_BOOST_IOSTREAMS
 AX_BOOST_PROGRAM_OPTIONS
-AX_BOOST_PYTHON
-AX_BOOST_REGEX
-AX_BOOST_SERIALIZATION
-AX_BOOST_SIGNALS
-AX_BOOST_SYSTEM
-AX_BOOST_TEST_EXEC_MONITOR
-AX_BOOST_THREAD
-AX_BOOST_UNIT_TEST_FRAMEWORK
-AX_BOOST_WSERIALIZATION
+#AX_BOOST_PYTHON
+#AX_BOOST_REGEX
+#AX_BOOST_SERIALIZATION
+#AX_BOOST_SIGNALS
+#AX_BOOST_SYSTEM
+#AX_BOOST_TEST_EXEC_MONITOR
+#AX_BOOST_THREAD
+#AX_BOOST_UNIT_TEST_FRAMEWORK
+#AX_BOOST_WSERIALIZATION
 
 # Pass ./configure args to distcheck target otherwise it runs 
 # a basic ./configure which isnt the 'make distcheck' you really want.
@@ -125,6 +126,9 @@ AC_SUBST([RPM_SOURCE_DIR])
 AC_SUBST([RPM_INSTALL_PREFIX0])
 AC_SUBST([RELEASE_NUMBER], [1])
 AC_SUBST([RELEASE], [1])
+
+AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
+
 AC_CONFIG_FILES([
     Makefile
     gander.spec

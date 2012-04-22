@@ -29,6 +29,6 @@ int main( int argc, char **argv )
         }
         std::cout << bytes_read;
     }
-    return 0;
+    return std::cout.bad();
 }
 

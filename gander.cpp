@@ -11,13 +11,14 @@ int main(int argc, char** argv)
       mylogin mylogin;
       mylogin.slurp( );
 
-   }
-   catch(std::exception & er)
-   {
-      std::cerr << "*** ERROR: " << er.what() << "\n";
-      return -1;
-	}
+    }
+    catch(std::exception & er)
+    {
+        std::cerr << "*** ERROR: " << er.what() << "\n";
+        return -1;
+    }
 
-	return 0;
+    return std::cout.bad();
 
 }
+
