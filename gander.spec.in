@@ -24,7 +24,7 @@ Program to find executables within the current ${PATH} which contain the text su
 
 %build
 #%configure --prefix %{_prefix} --with-boost=@BOOST_PATH@ 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
-%configure --prefix %{_prefix} 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
+%configure --prefix %{_prefix} --with-boost 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
 #%configure @DISTCHECK_CONFIGURE_FLAGS@
 make LDFLAGS+="-Wl,--build-id"
 make check
@@ -37,7 +37,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%_bindir/%{name}
+%_bindir/length
+%_includedir/dbgoutput.hpp
 
 #%files -n %{name}-devel
 #%defattr(-,root,root)

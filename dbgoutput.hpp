@@ -15,7 +15,7 @@
 #include <fstream>
 
 #ifdef USE_BOOST_THREADS
-#include "boost/thread/mutex.hpp"
+#include <boost/thread/mutex.hpp>
 #include <boost/thread.hpp>
 //#include <boost/thread/thread.hpp>
 #else
@@ -57,6 +57,8 @@ struct DbgOutput
 #endif
 };
 
+
+/*
 //#ifdef USE_GLIB_THREADS
 //Glib::StaticMutex mutex = GLIBMM_STATIC_MUTEX_INIT;
 //#endif
@@ -244,7 +246,7 @@ processArgs( int argc, char** argv, long& debug,
 
    return true;
 }
-
+*/
 
 #endif
 

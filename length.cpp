@@ -1,15 +1,6 @@
-#include <cstring>
-#include <iostream>
-#include <limits>
-#include "dbgoutput.hpp"
 
-//  VERSION % 100 is the patch level
-//  VERSION / 100 % 1000 is the minor version
-//  VERSION / 100000 is the major version
+#include "length.hpp"
 
-#ifndef VERSION
-#define VERSION 000002
-#endif
 //! \remarks Calculates and then displays the length of some characters to std::cout.
 //!          It chooses to read from argv[1] if argc > 1.
 //! \return 0

@@ -1,12 +1,12 @@
 # $Id: configure.ac 571 2010-06-19 17:39:26Z gander $
 
 # Process this file with autoconf to produce a configure script.
-AC_PREREQ(2.59)
+AC_PREREQ([2.59])
 m4_include([m4/version.m4])
 AC_INIT([gander], [VERSION_NUMBER], [agander@gmail.com])
 AM_INIT_AUTOMAKE
-AC_CONFIG_SRCDIR([gander.cpp])
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_SRCDIR([configure.ac])
+AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
 AC_CONFIG_MACRO_DIR([m4])
@@ -25,6 +25,7 @@ AC_LANG_CPLUSPLUS
 #AC_CHECK_LIB([xerces-c],[main])
 
 AC_PATH_PROGS([BASH], [bash])
+AC_PATH_PROGS([PYTHON], [python])
 
 # Checks for header files.
 # Ensure that 'AC_LANG_CPLUSPLUS' is defined before these
@@ -82,7 +83,7 @@ if [ ! test "x$enable_debug" != "xyes"]; then
   AC_DEFINE(DEBUG, 1, [Define to enable debug build: '-gdwarf-2 -O0'])
   AC_SUBST(DEBUG_CFLAGS)
   AC_SUBST(DEBUG_LIBS)
-  CXXFLAGS="-Wall -gdwarf-2 -O0 -m64 -mtune=k8"
+  CXXFLAGS="-Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic"
   AC_MSG_RESULT(yes)
 else
   AC_MSG_RESULT(no)
@@ -90,7 +91,7 @@ else
   DEBUG_LIBS=""
   AC_SUBST(DEBUG_CFLAGS)
   AC_SUBST(DEBUG_LIBS)
-  CXXFLAGS="-Wall -O3 -m64 -mtune=k8"
+  CXXFLAGS="-Wall -Wextra -O3 -m64 -mtune=generic"
 fi
 
 AX_BOOST_BASE([1.47])

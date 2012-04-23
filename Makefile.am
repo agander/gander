@@ -23,7 +23,11 @@ length_CXXFLAGS = -pthread $(GLIBMM_CFLAGS)
 length_LDADD    =  $(BOOST_PROGRAM_OPTIONS_LIB) $(GLIBMM_LIBS)
 length_LDFLAGS  = $(BOOST_LDFLAGS)
 
-EXTRA_DIST  = length.hpp dbgoutput.hpp
+#EXTRA_DIST  = length.hpp dbgoutput.hpp
+
+include_ganderdir = $(includedir)/$(PACKAGE_NAME)
+
+include_gander_HEADERS = length.hpp dbgoutput.hpp
 
 DISTCLEANFILES =  .deps/*.Po
 
