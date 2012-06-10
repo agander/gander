@@ -16,7 +16,9 @@ int main( int argc, char **argv )
         {
             bytes_read += std::cin.gcount( );
             //DbgOutput()(__FILE__, __PRETTY_FUNCTION__, __LINE__);
+#if defined DEBUG
             DbgOutput()(__FILE__, __func__, __LINE__);
+#endif
         }
         std::cout << bytes_read;
     }

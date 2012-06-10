@@ -73,24 +73,32 @@ AC_C_CONST
 #m4_include([m4/debug.m4])
 #AC_COMPILE_DEBUG
 dnl Check for option to enable debug
-AC_MSG_CHECKING(whether to enable debugging)
-AC_ARG_ENABLE(debug,
+AC_MSG_CHECKING([whether to enable debugging])
+AC_ARG_ENABLE([debug],
         [  --enable-debug=[no/yes]        enables debug build (default=no)],,
                  enable_debug=no)
 
+if test x"$DEJAGNU" = x
+then
+  DEJAGNU="\$(top_srcdir)/testsuite/site.exp"
+fi
+AC_SUBST([DEJAGNU])
+
+AC_SUBST([DEJATOOL], [length])
+
 dnl Checks for libraries
 if [ ! test "x$enable_debug" != "xyes"]; then
-  AC_DEFINE(DEBUG, 1, [Define to enable debug build: '-gdwarf-2 -O0'])
-  AC_SUBST(DEBUG_CFLAGS)
-  AC_SUBST(DEBUG_LIBS)
+  AC_DEFINE([DEBUG], [1], [Define to enable debug build: '-gdwarf-2 -O0'])
+  AC_SUBST([DEBUG_CFLAGS])
+  AC_SUBST([DEBUG_LIBS])
   CXXFLAGS="-Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic"
-  AC_MSG_RESULT(yes)
+  AC_MSG_RESULT([yes])
 else
-  AC_MSG_RESULT(no)
+  AC_MSG_RESULT([no])
   DEBUG_CFLAGS=""
   DEBUG_LIBS=""
-  AC_SUBST(DEBUG_CFLAGS)
-  AC_SUBST(DEBUG_LIBS)
+  AC_SUBST([DEBUG_CFLAGS])
+  AC_SUBST([DEBUG_LIBS])
   CXXFLAGS="-Wall -Wextra -O3 -m64 -mtune=generic"
 fi
 
@@ -110,10 +118,17 @@ AX_BOOST_PROGRAM_OPTIONS
 #AX_BOOST_UNIT_TEST_FRAMEWORK
 #AX_BOOST_WSERIALIZATION
 
+dnl Checks for Boost home/root
+BOOST_PATH=${ac_boost_path}
+AC_SUBST([BOOST_PATH])
+
 # Pass ./configure args to distcheck target otherwise it runs 
 # a basic ./configure which isnt the 'make distcheck' you really want.
 DISTCHECK_CONFIGURE_FLAGS="${ac_configure_args}"
-AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
+AC_SUBST([DISTCHECK_CONFIGURE_FLAGS])
+
+AC_SUBST([RELEASE_NUMBER], [1])
+AC_SUBST([RELEASE], [1])
 
 # RPM vars. Assumes that ~/.rpmmacros is defined and associated directory structure
 RPM_BUILD_DIR=$(rpm --eval "%{_builddir}")
@@ -122,20 +137,18 @@ AC_SUBST([RPM_BUILD_DIR])
 RPM_SOURCE_DIR=$(rpm --eval "%{_sourcedir}")
 AC_SUBST([RPM_SOURCE_DIR])
 
-#RPM_INSTALL_PREFIX=@prefix@
-#RPM_INSTALL_PREFIX=$(RPM_INSTALL_PREFIX)
 AC_SUBST([RPM_INSTALL_PREFIX0])
-AC_SUBST([RELEASE_NUMBER], [1])
-AC_SUBST([RELEASE], [1])
 
 AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
+AC_CONFIG_FILES([create_autoconf_skeleton], [chmod +x create_autoconf_skeleton])
 
 AC_CONFIG_FILES([
     Makefile
+    testsuite/Makefile
     gander.spec
+    include/Makefile
 ])
 #   gander.pc
-#   tests/Makefile
 #   tests/atlocal
 
 AC_OUTPUT

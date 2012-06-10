@@ -1,11 +1,12 @@
 
 # $Id: Makefile.am 571 2010-06-19 17:39:26Z length $
 
-AUTOMAKE_OPTIONS = gnu
+AUTOMAKE_OPTIONS = dejagnu
+#AUTOMAKE_OPTIONS = gnu
 
 ACLOCAL_AMFLAGS   =  -I m4
 
-#SUBDIRS = config po lib data src doc tests
+SUBDIRS = . include testsuite
 
 INCLUDES = -I$(top_srcdir) $(GLIBMM_CFLAGS)
 LIBS		= $(GLIBMM_LIBS)
@@ -23,7 +24,7 @@ length_CXXFLAGS = -pthread $(GLIBMM_CFLAGS)
 length_LDADD    =  $(BOOST_PROGRAM_OPTIONS_LIB) $(GLIBMM_LIBS)
 length_LDFLAGS  = $(BOOST_LDFLAGS)
 
-#EXTRA_DIST  = length.hpp dbgoutput.hpp
+EXTRA_DIST  = dbgoutput.hpp
 
 include_ganderdir = $(includedir)/$(PACKAGE_NAME)
 
@@ -31,8 +32,13 @@ include_gander_HEADERS = length.hpp dbgoutput.hpp
 
 DISTCLEANFILES =  .deps/*.Po
 
-dist_bin_SCRIPTS	=	buildCtags
+dist_bin_SCRIPTS	=	buildCtags \
+					    create_autoconf_skeleton
+
 BUILDCTAGSSOURCES	=	buildCtags.in
+
+CREATE_AUTOCONF_SKELETONSOURCES	=	create_autoconf_skeleton.in
+
 CLEANFILES = $(dist_bin_SCRIPTS)
 
 do_subst = sed -e 's,[@]datadir[@],$(datadir),g' \
@@ -42,6 +48,14 @@ do_subst = sed -e 's,[@]datadir[@],$(datadir),g' \
            -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
            -e 's,[@]VERSION[@],$(VERSION),g'
      
+
+# RPM generation steps.
+#rpmbuild --define="_prefix $(prefix)" --define="boost_path ${ac_boost_path}" -ba pword.spec
+rpm: distcheck dist
+	cp -p $(distdir).tar.gz @RPM_SOURCE_DIR@
+	rpmbuild --define="_prefix $(prefix)" --define="_boost_path ${BOOST_PATH}" -ba gander.spec
+
+
 #buildCtags: buildCtags.in Makefile
 #	$(do_subst) < $(srcdir)/buildCtags.in > buildCtags
 #	chmod +x buildCtags
@@ -76,10 +90,55 @@ do_subst = sed -e 's,[@]datadir[@],$(datadir),g' \
 
 #MYLOGIN_LIB = $(top_builddir)/libmylogin.la
 
-check_PROGRAMS = length
-check_SCRIPTS	=	buildCtags
-TESTS = $(check_PROGRAMS) \
-		$(check_SCRIPTS)
+check_PROGRAMS	=	length
+#check_SCRIPTS	=	buildCtags
+#TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
+
+
+#rm -fr t/
+#mkdir t && cd t/ && mkdir dtmpl.dir && \
+#echo "#!$(SHELL)" > dtmpl_good.sh && chmod ug+x dtmpl_good.sh && > dtmpl_nbg.sh &&\
+#chmod ug+x dtmpl_nbg.sh && ls -l && ./dtmpl dtmpl
+#rm -fr t/
+
+
+# Testsuite.
+
+#TESTSUITE_FILES = \
+#	testsuite/length.exp
+
+#testsuite/runtest.all/topdir/subdir1/subfile1 \
+#testsuite/runtest.all/topdir/subdir1/subfile2 \
+#testsuite/runtest.all/topdir/subdir2/subfile2 \
+#testsuite/runtest.all/libs.exp \
+#testsuite/runtest.all/options.exp \
+#testsuite/runtest.all/remote.test \
+#testsuite/runtest.all/stats-sub.exp \
+#testsuite/runtest.all/stats.exp \
+#testsuite/runtest.all/target.test \
+#testsuite/runtest.all/utils.test \
+#testsuite/runtest.all/clone_output.test \
+#testsuite/runtest.all/config.test \
+#testsuite/runtest.all/default_procs.tcl \
+#testsuite/config/default.exp \
+#testsuite/lib/libsup.exp \
+#testsuite/lib/util-defs.exp \
+#testsuite/libdejagnu/tunit.exp
+
+#RUNTEST = ${top_srcdir}/runtest
+#RUNTESTDEFAULTFLAGS = --srcdir $(srcdir)/testsuite 
+#RUNTEST=$(RUNTEST)
+
+#export DEJAGNU
+
+#DEJATOOL            = length
+
+# Testsuite/check forwarding targets.
+#check-length:
+#	AMOUNT=$((( ${RANDOM}*5 ))) \
+#	export AMOUNT; \
+#	base64 < /dev/urandom 
+
 
 #basic_SOURCES  =  basic.cpp
 #basic_CXXFLAGS = $(GLIBMM_CFLAGS) -m64 -mtune=k8

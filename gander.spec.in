@@ -17,14 +17,18 @@ Prefix: %{_prefix}
 Provides: %{name} = %{version}-%{release}
 
 %description
-Program to find executables within the current ${PATH} which contain the text supplied arguements.
+Various program:
+- length: output the length oa string;
+- buildCtags: Create/update the vim ctags file from all include/ directories;
+- create_autoconf_skeleton: Create a autoconf/cmake project suitable for KDevelop.
 
 %prep
 %setup
 
 %build
 #%configure --prefix %{_prefix} --with-boost=@BOOST_PATH@ 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
-%configure --prefix %{_prefix} --with-boost 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
+#%configure --prefix %{_prefix} --with-boost 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
+%configure --prefix %{_prefix} --with-boost=%{_boost_path} 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
 #%configure @DISTCHECK_CONFIGURE_FLAGS@
 make LDFLAGS+="-Wl,--build-id"
 make check
@@ -37,7 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%_bindir/length
+#%_bindir/length
+%_bindir/buildCtags
+%_bindir/create_autoconf_skeleton
 %_includedir/dbgoutput.hpp
 
 #%files -n %{name}-devel
