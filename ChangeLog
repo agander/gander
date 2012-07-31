@@ -1,33 +1,28 @@
 
+2012-07-31 15:48 Giles Anderson<agander@gmail.com>
+ * [0.0.4]: Final for version.
+ * RPM updated to include general.hpp.
+ * This includes strtolong<>() which converts a string to a long.
+ * Ought to be 'strtodigit' really as it now has a template to take a numeric type; std::size_t/long etc.
+
 2012-06-10 17:10 Giles Anderson<agander@gmail.com>
  * [0.0.2]: Final. RPM created for buildCtags & create_autoconf_skeleton.
-
 
 2012-04-23 23:08:29 +0100 Giles Anderson <agander@gmail.com>
  * [0.0.2/2012-04-23 2308]: WIP: length.hpp: New.
 
-
-
 2012-04-23 12:29:55 +0100 Giles Anderson <agander@gmail.com>
  * [0.0.2/2012-04-23 00:10]: WIP: Get buildCtags working.
-
-
 
 2012-04-21 21:28:33 +0100 Giles Anderson <agander@gmail.com>
  * [PROJ] WIP commit before push to gitolite@agander:public_git.git 
  * and separation to its own repo.
 
-
-
 2010-12-22 14:54:13 +0000 Giles Anderson <agander@gmail.com>
  * Initial state for trace_include: Base autoconf creation.
 
-
-
 2010-11-20 11:42:16 +0000 Giles Anderson <agander@gmail.com>
  * Package not build into rpm. General add/update of useful tool sources.
-
-
 
 2010-10-24 10:37:57 +0100 Giles Anderson <agander@gmail.com>
  * [0.0.1]: Initial state for version: 

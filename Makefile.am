@@ -1,4 +1,5 @@
 
+
 # $Id: Makefile.am 571 2010-06-19 17:39:26Z length $
 
 AUTOMAKE_OPTIONS = dejagnu
@@ -33,11 +34,14 @@ include_gander_HEADERS = length.hpp dbgoutput.hpp
 DISTCLEANFILES =  .deps/*.Po
 
 dist_bin_SCRIPTS	=	buildCtags \
-					    create_autoconf_skeleton
+					    create_autoconf_skeleton \
+						need_to_run_autoreconf
 
 BUILDCTAGSSOURCES	=	buildCtags.in
 
-CREATE_AUTOCONF_SKELETONSOURCES	=	create_autoconf_skeleton.in
+CREATE_AUTOCONF_SKELETONSOURCES	= create_autoconf_skeleton.in
+
+NEED_TO_RUN_AUTORECONFSOURCES = need_to_run_autoreconf.in
 
 CLEANFILES = $(dist_bin_SCRIPTS)
 
@@ -100,7 +104,6 @@ check_PROGRAMS	=	length
 #echo "#!$(SHELL)" > dtmpl_good.sh && chmod ug+x dtmpl_good.sh && > dtmpl_nbg.sh &&\
 #chmod ug+x dtmpl_nbg.sh && ls -l && ./dtmpl dtmpl
 #rm -fr t/
-
 
 # Testsuite.
 

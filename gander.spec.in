@@ -1,7 +1,7 @@
 %define name @PACKAGE_TARNAME@
 
 Name: @PACKAGE_TARNAME@
-Summary: General include files, 
+Summary: General include files and C++ functions.
 Group: Utilities
 Version: @VERSION@
 Release: @RELEASE@
@@ -9,7 +9,7 @@ License: GPL
 #BuildHost: %{_hostname}
 
 Source: @PACKAGE_TARNAME@-@VERSION@.tar.gz
-URL: git//agander/PROJ/@PACKAGE_TARNAME@
+URL: git://agander/@PACKAGE_TARNAME@.git
 
 BuildRoot: %{_tmppath}/%{name}-root
 Prefix: %{_prefix}
@@ -21,6 +21,8 @@ Various program:
 - length: output the length oa string;
 - buildCtags: Create/update the vim ctags file from all include/ directories;
 - create_autoconf_skeleton: Create a autoconf/cmake project suitable for KDevelop.
+- dbgoutput.hpp: Provides a functiod for displaying messages during development.
+- general.hpp: strtolong<>(): Template functiod to convert strings to long.
 
 %prep
 %setup
@@ -45,6 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/buildCtags
 %_bindir/create_autoconf_skeleton
 %_includedir/dbgoutput.hpp
+%_includedir/general.hpp
+
 
 #%files -n %{name}-devel
 #%defattr(-,root,root)

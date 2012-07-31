@@ -1,7 +1,6 @@
-# $Id: configure.ac 571 2010-06-19 17:39:26Z gander $
 
 # Process this file with autoconf to produce a configure script.
-AC_PREREQ([2.59])
+AC_PREREQ([2.68])
 m4_include([m4/version.m4])
 AC_INIT([gander], [VERSION_NUMBER], [agander@gmail.com])
 AM_INIT_AUTOMAKE
@@ -141,6 +140,7 @@ AC_SUBST([RPM_INSTALL_PREFIX0])
 
 AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
 AC_CONFIG_FILES([create_autoconf_skeleton], [chmod +x create_autoconf_skeleton])
+AC_CONFIG_FILES([need_to_run_autoreconf], [chmod +x need_to_run_autoreconf])
 
 AC_CONFIG_FILES([
     Makefile
@@ -152,5 +152,3 @@ AC_CONFIG_FILES([
 #   tests/atlocal
 
 AC_OUTPUT
-
-
