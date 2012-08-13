@@ -27,6 +27,8 @@ uname -v = #1 SMP Fri Jul 20 12:58:04 UTC 2012
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
+PATH: /home/gander/bin
+PATH: /home/gander/.local/bin
 PATH: /usr/lib64/qt-3.3/bin
 PATH: /usr/lib64/ccache
 PATH: /usr/local/bin
@@ -36,11 +38,7 @@ PATH: /usr/local/sbin
 PATH: /usr/sbin
 PATH: /sbin
 PATH: /usr/lib64/openmpi/bin
-PATH: /home/gander/.local/bin
-PATH: /home/gander/bin
 PATH: /usr/lib64/openmpi/bin
-PATH: /home/gander/bin
-PATH: .
 PATH: /usr/lib64/openmpi/bin
 
 
@@ -48,218 +46,216 @@ PATH: /usr/lib64/openmpi/bin
 ## Core tests. ##
 ## ----------- ##
 
-configure:2470: checking for a BSD-compatible install
-configure:2538: result: /usr/bin/install -c
-configure:2549: checking whether build environment is sane
-configure:2599: result: yes
-configure:2740: checking for a thread-safe mkdir -p
-configure:2779: result: /bin/mkdir -p
-configure:2792: checking for gawk
-configure:2808: found /usr/bin/gawk
-configure:2819: result: gawk
-configure:2830: checking whether make sets $(MAKE)
-configure:2852: result: yes
-configure:2937: checking whether to enable maintainer-specific portions of Makefiles
-configure:2946: result: no
-configure:3020: checking for g++
-configure:3036: found /usr/lib64/ccache/g++
-configure:3047: result: g++
-configure:3074: checking for C++ compiler version
-configure:3083: g++ --version >&5
-g++ (GCC) 4.8.0 20120730 (experimental)
-Copyright (C) 2012 Free Software Foundation, Inc.
+configure:2471: checking for a BSD-compatible install
+configure:2539: result: /usr/bin/install -c
+configure:2550: checking whether build environment is sane
+configure:2600: result: yes
+configure:2741: checking for a thread-safe mkdir -p
+configure:2780: result: /bin/mkdir -p
+configure:2793: checking for gawk
+configure:2809: found /usr/bin/gawk
+configure:2820: result: gawk
+configure:2831: checking whether make sets $(MAKE)
+configure:2853: result: yes
+configure:2938: checking whether to enable maintainer-specific portions of Makefiles
+configure:2947: result: no
+configure:3021: checking for g++
+configure:3037: found /usr/lib64/ccache/g++
+configure:3048: result: g++
+configure:3075: checking for C++ compiler version
+configure:3084: g++ --version >&5
+g++ (GCC) 4.6.3 20120306 (Red Hat 4.6.3-2)
+Copyright (C) 2011 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:3094: $? = 0
-configure:3083: g++ -v >&5
+configure:3095: $? = 0
+configure:3084: g++ -v >&5
 Using built-in specs.
-COLLECT_GCC=/usr/local/bin/g++
-COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.8.0/lto-wrapper
-Target: x86_64-unknown-linux-gnu
-Configured with: /home/gander/PROJ/FOSS/gcc_20120724/configure
+COLLECT_GCC=/usr/bin/g++
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.6.3/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
 Thread model: posix
-gcc version 4.8.0 20120730 (experimental) (GCC) 
-configure:3094: $? = 0
-configure:3083: g++ -V >&5
-g++: error: unrecognized command line option '-V'
+gcc version 4.6.3 20120306 (Red Hat 4.6.3-2) (GCC) 
+configure:3095: $? = 0
+configure:3084: g++ -V >&5
+g++: error: unrecognized option '-V'
 g++: fatal error: no input files
 compilation terminated.
-configure:3094: $? = 1
-configure:3083: g++ -qversion >&5
-g++: error: unrecognized command line option '-qversion'
+configure:3095: $? = 4
+configure:3084: g++ -qversion >&5
+g++: error: unrecognized option '-qversion'
 g++: fatal error: no input files
 compilation terminated.
-configure:3094: $? = 1
-configure:3114: checking whether the C++ compiler works
-configure:3136: g++    conftest.cpp  >&5
-configure:3140: $? = 0
-configure:3188: result: yes
-configure:3191: checking for C++ compiler default output file name
-configure:3193: result: a.out
-configure:3199: checking for suffix of executables
-configure:3206: g++ -o conftest    conftest.cpp  >&5
-configure:3210: $? = 0
-configure:3232: result: 
-configure:3254: checking whether we are cross compiling
-configure:3262: g++ -o conftest    conftest.cpp  >&5
-configure:3266: $? = 0
-configure:3273: ./conftest
-configure:3277: $? = 0
-configure:3292: result: no
-configure:3297: checking for suffix of object files
-configure:3319: g++ -c   conftest.cpp >&5
-configure:3323: $? = 0
-configure:3344: result: o
-configure:3348: checking whether we are using the GNU C++ compiler
-configure:3367: g++ -c   conftest.cpp >&5
-configure:3367: $? = 0
-configure:3376: result: yes
-configure:3385: checking whether g++ accepts -g
-configure:3405: g++ -c -g  conftest.cpp >&5
-configure:3405: $? = 0
-configure:3446: result: yes
-configure:3480: checking for style of include used by make
-configure:3508: result: GNU
-configure:3533: checking dependency style of g++
-configure:3643: result: gcc3
-configure:3706: checking for gcc
-configure:3722: found /usr/lib64/ccache/gcc
-configure:3733: result: gcc
-configure:3962: checking for C compiler version
-configure:3971: gcc --version >&5
-gcc (GCC) 4.8.0 20120730 (experimental)
-Copyright (C) 2012 Free Software Foundation, Inc.
+configure:3095: $? = 4
+configure:3115: checking whether the C++ compiler works
+configure:3137: g++    conftest.cpp  >&5
+configure:3141: $? = 0
+configure:3189: result: yes
+configure:3192: checking for C++ compiler default output file name
+configure:3194: result: a.out
+configure:3200: checking for suffix of executables
+configure:3207: g++ -o conftest    conftest.cpp  >&5
+configure:3211: $? = 0
+configure:3233: result: 
+configure:3255: checking whether we are cross compiling
+configure:3263: g++ -o conftest    conftest.cpp  >&5
+configure:3267: $? = 0
+configure:3274: ./conftest
+configure:3278: $? = 0
+configure:3293: result: no
+configure:3298: checking for suffix of object files
+configure:3320: g++ -c   conftest.cpp >&5
+configure:3324: $? = 0
+configure:3345: result: o
+configure:3349: checking whether we are using the GNU C++ compiler
+configure:3368: g++ -c   conftest.cpp >&5
+configure:3368: $? = 0
+configure:3377: result: yes
+configure:3386: checking whether g++ accepts -g
+configure:3406: g++ -c -g  conftest.cpp >&5
+configure:3406: $? = 0
+configure:3447: result: yes
+configure:3481: checking for style of include used by make
+configure:3509: result: GNU
+configure:3534: checking dependency style of g++
+configure:3644: result: gcc3
+configure:3707: checking for gcc
+configure:3723: found /usr/lib64/ccache/gcc
+configure:3734: result: gcc
+configure:3963: checking for C compiler version
+configure:3972: gcc --version >&5
+gcc (GCC) 4.6.3 20120306 (Red Hat 4.6.3-2)
+Copyright (C) 2011 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:3982: $? = 0
-configure:3971: gcc -v >&5
+configure:3983: $? = 0
+configure:3972: gcc -v >&5
 Using built-in specs.
-COLLECT_GCC=/usr/local/bin/gcc
-COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.8.0/lto-wrapper
-Target: x86_64-unknown-linux-gnu
-Configured with: /home/gander/PROJ/FOSS/gcc_20120724/configure
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.6.3/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
 Thread model: posix
-gcc version 4.8.0 20120730 (experimental) (GCC) 
-configure:3982: $? = 0
-configure:3971: gcc -V >&5
-gcc: error: unrecognized command line option '-V'
+gcc version 4.6.3 20120306 (Red Hat 4.6.3-2) (GCC) 
+configure:3983: $? = 0
+configure:3972: gcc -V >&5
+gcc: error: unrecognized option '-V'
 gcc: fatal error: no input files
 compilation terminated.
-configure:3982: $? = 1
-configure:3971: gcc -qversion >&5
-gcc: error: unrecognized command line option '-qversion'
+configure:3983: $? = 4
+configure:3972: gcc -qversion >&5
+gcc: error: unrecognized option '-qversion'
 gcc: fatal error: no input files
 compilation terminated.
-configure:3982: $? = 1
-configure:3986: checking whether we are using the GNU C compiler
-configure:4005: gcc -c   conftest.c >&5
-configure:4005: $? = 0
-configure:4014: result: yes
-configure:4023: checking whether gcc accepts -g
-configure:4043: gcc -c -g  conftest.c >&5
-configure:4043: $? = 0
-configure:4084: result: yes
-configure:4101: checking for gcc option to accept ISO C89
-configure:4165: gcc  -c -g -O2  conftest.c >&5
-configure:4165: $? = 0
-configure:4178: result: none needed
-configure:4200: checking dependency style of gcc
-configure:4310: result: gcc3
-configure:4386: checking build system type
-configure:4400: result: x86_64-unknown-linux-gnu
-configure:4420: checking host system type
-configure:4433: result: x86_64-unknown-linux-gnu
-configure:4474: checking how to print strings
-configure:4501: result: printf
-configure:4522: checking for a sed that does not truncate output
-configure:4586: result: /bin/sed
-configure:4604: checking for grep that handles long lines and -e
-configure:4662: result: /bin/grep
-configure:4667: checking for egrep
-configure:4729: result: /bin/grep -E
-configure:4734: checking for fgrep
-configure:4796: result: /bin/grep -F
-configure:4831: checking for ld used by gcc
-configure:4898: result: /usr/bin/ld
-configure:4905: checking if the linker (/usr/bin/ld) is GNU ld
-configure:4920: result: yes
-configure:4932: checking for BSD- or MS-compatible name lister (nm)
-configure:4981: result: /usr/bin/nm -B
-configure:5111: checking the name lister (/usr/bin/nm -B) interface
-configure:5118: gcc -c -g -O2  conftest.c >&5
-configure:5121: /usr/bin/nm -B "conftest.o"
-configure:5124: output
+configure:3983: $? = 4
+configure:3987: checking whether we are using the GNU C compiler
+configure:4006: gcc -c   conftest.c >&5
+configure:4006: $? = 0
+configure:4015: result: yes
+configure:4024: checking whether gcc accepts -g
+configure:4044: gcc -c -g  conftest.c >&5
+configure:4044: $? = 0
+configure:4085: result: yes
+configure:4102: checking for gcc option to accept ISO C89
+configure:4166: gcc  -c -g -O2  conftest.c >&5
+configure:4166: $? = 0
+configure:4179: result: none needed
+configure:4201: checking dependency style of gcc
+configure:4311: result: gcc3
+configure:4387: checking build system type
+configure:4401: result: x86_64-unknown-linux-gnu
+configure:4421: checking host system type
+configure:4434: result: x86_64-unknown-linux-gnu
+configure:4475: checking how to print strings
+configure:4502: result: printf
+configure:4523: checking for a sed that does not truncate output
+configure:4587: result: /bin/sed
+configure:4605: checking for grep that handles long lines and -e
+configure:4663: result: /bin/grep
+configure:4668: checking for egrep
+configure:4730: result: /bin/grep -E
+configure:4735: checking for fgrep
+configure:4797: result: /bin/grep -F
+configure:4832: checking for ld used by gcc
+configure:4899: result: /usr/bin/ld
+configure:4906: checking if the linker (/usr/bin/ld) is GNU ld
+configure:4921: result: yes
+configure:4933: checking for BSD- or MS-compatible name lister (nm)
+configure:4982: result: /usr/bin/nm -B
+configure:5112: checking the name lister (/usr/bin/nm -B) interface
+configure:5119: gcc -c -g -O2  conftest.c >&5
+configure:5122: /usr/bin/nm -B "conftest.o"
+configure:5125: output
 0000000000000000 B some_variable
-configure:5131: result: BSD nm
-configure:5134: checking whether ln -s works
-configure:5138: result: yes
-configure:5146: checking the maximum length of command line arguments
-configure:5271: result: 1572864
-configure:5288: checking whether the shell understands some XSI constructs
-configure:5298: result: yes
-configure:5302: checking whether the shell understands "+="
-configure:5308: result: yes
-configure:5343: checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format
-configure:5383: result: func_convert_file_noop
-configure:5390: checking how to convert x86_64-unknown-linux-gnu file names to toolchain format
-configure:5410: result: func_convert_file_noop
-configure:5417: checking for /usr/bin/ld option to reload object files
-configure:5424: result: -r
-configure:5498: checking for objdump
-configure:5514: found /usr/bin/objdump
-configure:5525: result: objdump
-configure:5557: checking how to recognize dependent libraries
-configure:5759: result: pass_all
-configure:5844: checking for dlltool
-configure:5874: result: no
-configure:5904: checking how to associate runtime and link libraries
-configure:5931: result: printf %s\n
-configure:5992: checking for ar
-configure:6008: found /usr/bin/ar
-configure:6019: result: ar
-configure:6056: checking for archiver @FILE support
-configure:6073: gcc -c -g -O2  conftest.c >&5
-configure:6073: $? = 0
-configure:6076: ar cru libconftest.a @conftest.lst >&5
-configure:6079: $? = 0
-configure:6084: ar cru libconftest.a @conftest.lst >&5
+configure:5132: result: BSD nm
+configure:5135: checking whether ln -s works
+configure:5139: result: yes
+configure:5147: checking the maximum length of command line arguments
+configure:5272: result: 1572864
+configure:5289: checking whether the shell understands some XSI constructs
+configure:5299: result: yes
+configure:5303: checking whether the shell understands "+="
+configure:5309: result: yes
+configure:5344: checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format
+configure:5384: result: func_convert_file_noop
+configure:5391: checking how to convert x86_64-unknown-linux-gnu file names to toolchain format
+configure:5411: result: func_convert_file_noop
+configure:5418: checking for /usr/bin/ld option to reload object files
+configure:5425: result: -r
+configure:5499: checking for objdump
+configure:5515: found /usr/bin/objdump
+configure:5526: result: objdump
+configure:5558: checking how to recognize dependent libraries
+configure:5760: result: pass_all
+configure:5845: checking for dlltool
+configure:5875: result: no
+configure:5905: checking how to associate runtime and link libraries
+configure:5932: result: printf %s\n
+configure:5993: checking for ar
+configure:6009: found /usr/bin/ar
+configure:6020: result: ar
+configure:6057: checking for archiver @FILE support
+configure:6074: gcc -c -g -O2  conftest.c >&5
+configure:6074: $? = 0
+configure:6077: ar cru libconftest.a @conftest.lst >&5
+configure:6080: $? = 0
+configure:6085: ar cru libconftest.a @conftest.lst >&5
 ar: conftest.o: No such file or directory
-configure:6087: $? = 1
-configure:6099: result: @
-configure:6157: checking for strip
-configure:6173: found /usr/bin/strip
-configure:6184: result: strip
-configure:6256: checking for ranlib
-configure:6272: found /usr/bin/ranlib
-configure:6283: result: ranlib
-configure:6385: checking command to parse /usr/bin/nm -B output from gcc object
-configure:6504: gcc -c -g -O2  conftest.c >&5
-configure:6507: $? = 0
-configure:6511: /usr/bin/nm -B conftest.o \| sed -n -e 's/^.*[ ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ ][ ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p' | sed '/ __gnu_lto/d' \> conftest.nm
-configure:6514: $? = 0
-configure:6580: gcc -o conftest -g -O2   conftest.c conftstm.o >&5
-configure:6583: $? = 0
-configure:6621: result: ok
-configure:6658: checking for sysroot
-configure:6688: result: no
-configure:6765: gcc -c -g -O2  conftest.c >&5
-configure:6768: $? = 0
-configure:6931: checking for mt
-configure:6961: result: no
-configure:6981: checking if : is a manifest tool
-configure:6987: : '-?'
-configure:6995: result: no
-configure:7627: checking how to run the C preprocessor
-configure:7658: gcc -E  conftest.c
-configure:7658: $? = 0
-configure:7672: gcc -E  conftest.c
+configure:6088: $? = 1
+configure:6100: result: @
+configure:6158: checking for strip
+configure:6174: found /usr/bin/strip
+configure:6185: result: strip
+configure:6257: checking for ranlib
+configure:6273: found /usr/bin/ranlib
+configure:6284: result: ranlib
+configure:6386: checking command to parse /usr/bin/nm -B output from gcc object
+configure:6505: gcc -c -g -O2  conftest.c >&5
+configure:6508: $? = 0
+configure:6512: /usr/bin/nm -B conftest.o \| sed -n -e 's/^.*[ ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ ][ ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p' | sed '/ __gnu_lto/d' \> conftest.nm
+configure:6515: $? = 0
+configure:6581: gcc -o conftest -g -O2   conftest.c conftstm.o >&5
+configure:6584: $? = 0
+configure:6622: result: ok
+configure:6659: checking for sysroot
+configure:6689: result: no
+configure:6766: gcc -c -g -O2  conftest.c >&5
+configure:6769: $? = 0
+configure:6932: checking for mt
+configure:6962: result: no
+configure:6982: checking if : is a manifest tool
+configure:6988: : '-?'
+configure:6996: result: no
+configure:7628: checking how to run the C preprocessor
+configure:7659: gcc -E  conftest.c
+configure:7659: $? = 0
+configure:7673: gcc -E  conftest.c
 conftest.c:11:28: fatal error: ac_nonexistent.h: No such file or directory
- #include <ac_nonexistent.h>
-                            ^
 compilation terminated.
-configure:7672: $? = 1
+configure:7673: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "gander"
@@ -272,15 +268,13 @@ configure: failed program was:
 | #define VERSION "0.0.4"
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:7697: result: gcc -E
-configure:7717: gcc -E  conftest.c
-configure:7717: $? = 0
-configure:7731: gcc -E  conftest.c
+configure:7698: result: gcc -E
+configure:7718: gcc -E  conftest.c
+configure:7718: $? = 0
+configure:7732: gcc -E  conftest.c
 conftest.c:11:28: fatal error: ac_nonexistent.h: No such file or directory
- #include <ac_nonexistent.h>
-                            ^
 compilation terminated.
-configure:7731: $? = 1
+configure:7732: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "gander"
@@ -293,107 +287,105 @@ configure: failed program was:
 | #define VERSION "0.0.4"
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:7760: checking for ANSI C header files
-configure:7780: gcc -c -g -O2  conftest.c >&5
-configure:7780: $? = 0
-configure:7853: gcc -o conftest -g -O2   conftest.c  >&5
-configure:7853: $? = 0
-configure:7853: ./conftest
-configure:7853: $? = 0
-configure:7864: result: yes
-configure:7877: checking for sys/types.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for sys/stat.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for stdlib.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for string.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for memory.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for strings.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for inttypes.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for stdint.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7877: checking for unistd.h
-configure:7877: gcc -c -g -O2  conftest.c >&5
-configure:7877: $? = 0
-configure:7877: result: yes
-configure:7891: checking for dlfcn.h
-configure:7891: gcc -c -g -O2  conftest.c >&5
-configure:7891: $? = 0
-configure:7891: result: yes
-configure:8059: checking for objdir
-configure:8074: result: .libs
-configure:8345: checking if gcc supports -fno-rtti -fno-exceptions
-configure:8363: gcc -c -g -O2  -fno-rtti -fno-exceptions conftest.c >&5
+configure:7761: checking for ANSI C header files
+configure:7781: gcc -c -g -O2  conftest.c >&5
+configure:7781: $? = 0
+configure:7854: gcc -o conftest -g -O2   conftest.c  >&5
+configure:7854: $? = 0
+configure:7854: ./conftest
+configure:7854: $? = 0
+configure:7865: result: yes
+configure:7878: checking for sys/types.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for sys/stat.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for stdlib.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for string.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for memory.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for strings.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for inttypes.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for stdint.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7878: checking for unistd.h
+configure:7878: gcc -c -g -O2  conftest.c >&5
+configure:7878: $? = 0
+configure:7878: result: yes
+configure:7892: checking for dlfcn.h
+configure:7892: gcc -c -g -O2  conftest.c >&5
+configure:7892: $? = 0
+configure:7892: result: yes
+configure:8060: checking for objdir
+configure:8075: result: .libs
+configure:8346: checking if gcc supports -fno-rtti -fno-exceptions
+configure:8364: gcc -c -g -O2  -fno-rtti -fno-exceptions conftest.c >&5
 cc1: warning: command line option '-fno-rtti' is valid for C++/ObjC++ but not for C [enabled by default]
 cc1: warning: command line option '-fno-rtti' is valid for C++/ObjC++ but not for C [enabled by default]
-configure:8367: $? = 0
-configure:8380: result: no
-configure:8690: checking for gcc option to produce PIC
-configure:8697: result: -fPIC -DPIC
-configure:8705: checking if gcc PIC flag -fPIC -DPIC works
-configure:8723: gcc -c -g -O2  -fPIC -DPIC -DPIC conftest.c >&5
-configure:8727: $? = 0
-configure:8740: result: yes
-configure:8769: checking if gcc static flag -static works
-configure:8797: result: no
-configure:8812: checking if gcc supports -c -o file.o
-configure:8833: gcc -c -g -O2  -o out/conftest2.o conftest.c >&5
-configure:8837: $? = 0
-configure:8859: result: yes
-configure:8867: checking if gcc supports -c -o file.o
-configure:8914: result: yes
-configure:8947: checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
-configure:10105: result: yes
-configure:10142: checking whether -lc should be explicitly linked in
-configure:10150: gcc -c -g -O2  conftest.c >&5
-configure:10153: $? = 0
-configure:10168: gcc -shared  -fPIC -DPIC conftest.o  -v -Wl,-soname -Wl,conftest -o conftest 2\>\&1 \| /bin/grep  -lc  \>/dev/null 2\>\&1
-configure:10171: $? = 0
-configure:10185: result: no
-configure:10350: checking dynamic linker characteristics
-configure:10864: gcc -o conftest -g -O2   -Wl,-rpath -Wl,/foo conftest.c  >&5
-configure:10864: $? = 0
-configure:11090: result: GNU/Linux ld.so
-configure:11197: checking how to hardcode library paths into programs
-configure:11222: result: immediate
-configure:11762: checking whether stripping libraries is possible
-configure:11767: result: yes
-configure:11802: checking if libtool supports shared libraries
-configure:11804: result: yes
-configure:11807: checking whether to build shared libraries
-configure:11828: result: yes
-configure:11831: checking whether to build static libraries
-configure:11835: result: yes
-configure:11858: checking how to run the C++ preprocessor
-configure:11885: g++ -E  conftest.cpp
-configure:11885: $? = 0
-configure:11899: g++ -E  conftest.cpp
+configure:8368: $? = 0
+configure:8381: result: no
+configure:8691: checking for gcc option to produce PIC
+configure:8698: result: -fPIC -DPIC
+configure:8706: checking if gcc PIC flag -fPIC -DPIC works
+configure:8724: gcc -c -g -O2  -fPIC -DPIC -DPIC conftest.c >&5
+configure:8728: $? = 0
+configure:8741: result: yes
+configure:8770: checking if gcc static flag -static works
+configure:8798: result: no
+configure:8813: checking if gcc supports -c -o file.o
+configure:8834: gcc -c -g -O2  -o out/conftest2.o conftest.c >&5
+configure:8838: $? = 0
+configure:8860: result: yes
+configure:8868: checking if gcc supports -c -o file.o
+configure:8915: result: yes
+configure:8948: checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
+configure:10106: result: yes
+configure:10143: checking whether -lc should be explicitly linked in
+configure:10151: gcc -c -g -O2  conftest.c >&5
+configure:10154: $? = 0
+configure:10169: gcc -shared  -fPIC -DPIC conftest.o  -v -Wl,-soname -Wl,conftest -o conftest 2\>\&1 \| /bin/grep  -lc  \>/dev/null 2\>\&1
+configure:10172: $? = 0
+configure:10186: result: no
+configure:10351: checking dynamic linker characteristics
+configure:10865: gcc -o conftest -g -O2   -Wl,-rpath -Wl,/foo conftest.c  >&5
+configure:10865: $? = 0
+configure:11091: result: GNU/Linux ld.so
+configure:11198: checking how to hardcode library paths into programs
+configure:11223: result: immediate
+configure:11763: checking whether stripping libraries is possible
+configure:11768: result: yes
+configure:11803: checking if libtool supports shared libraries
+configure:11805: result: yes
+configure:11808: checking whether to build shared libraries
+configure:11829: result: yes
+configure:11832: checking whether to build static libraries
+configure:11836: result: yes
+configure:11859: checking how to run the C++ preprocessor
+configure:11886: g++ -E  conftest.cpp
+configure:11886: $? = 0
+configure:11900: g++ -E  conftest.cpp
 conftest.cpp:23:28: fatal error: ac_nonexistent.h: No such file or directory
- #include <ac_nonexistent.h>
-                            ^
 compilation terminated.
-configure:11899: $? = 1
+configure:11900: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "gander"
@@ -418,15 +410,13 @@ configure: failed program was:
 | #define LT_OBJDIR ".libs/"
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:11924: result: g++ -E
-configure:11944: g++ -E  conftest.cpp
-configure:11944: $? = 0
-configure:11958: g++ -E  conftest.cpp
+configure:11925: result: g++ -E
+configure:11945: g++ -E  conftest.cpp
+configure:11945: $? = 0
+configure:11959: g++ -E  conftest.cpp
 conftest.cpp:23:28: fatal error: ac_nonexistent.h: No such file or directory
- #include <ac_nonexistent.h>
-                            ^
 compilation terminated.
-configure:11958: $? = 1
+configure:11959: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "gander"
@@ -451,113 +441,111 @@ configure: failed program was:
 | #define LT_OBJDIR ".libs/"
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:12128: checking for ld used by g++
-configure:12195: result: /usr/bin/ld -m elf_x86_64
-configure:12202: checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld
-configure:12217: result: yes
-configure:12272: checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
-configure:13276: result: yes
-configure:13311: g++ -c -g -O2  conftest.cpp >&5
-configure:13314: $? = 0
-configure:13834: checking for g++ option to produce PIC
-configure:13841: result: -fPIC -DPIC
-configure:13849: checking if g++ PIC flag -fPIC -DPIC works
-configure:13867: g++ -c -g -O2  -fPIC -DPIC -DPIC conftest.cpp >&5
-configure:13871: $? = 0
-configure:13884: result: yes
-configure:13907: checking if g++ static flag -static works
-configure:13935: result: no
-configure:13947: checking if g++ supports -c -o file.o
-configure:13968: g++ -c -g -O2  -o out/conftest2.o conftest.cpp >&5
-configure:13972: $? = 0
-configure:13994: result: yes
-configure:13999: checking if g++ supports -c -o file.o
-configure:14046: result: yes
-configure:14076: checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
-configure:14110: result: yes
-configure:14253: checking dynamic linker characteristics
-configure:14927: result: GNU/Linux ld.so
-configure:14980: checking how to hardcode library paths into programs
-configure:15005: result: immediate
-configure:15065: checking whether make sets $(MAKE)
-configure:15087: result: yes
-configure:15110: checking for bash
-configure:15140: result: /bin/sh
-configure:15155: checking for python
-configure:15173: found /usr/bin/python
-configure:15185: result: /usr/bin/python
-configure:15201: checking iostream usability
-configure:15201: g++ -c -g -O2  conftest.cpp >&5
-configure:15201: $? = 0
-configure:15201: result: yes
-configure:15201: checking iostream presence
-configure:15201: g++ -E  conftest.cpp
-configure:15201: $? = 0
-configure:15201: result: yes
-configure:15201: checking for iostream
-configure:15201: result: yes
-configure:15207: checking map usability
-configure:15207: g++ -c -g -O2  conftest.cpp >&5
-configure:15207: $? = 0
-configure:15207: result: yes
-configure:15207: checking map presence
-configure:15207: g++ -E  conftest.cpp
-configure:15207: $? = 0
-configure:15207: result: yes
-configure:15207: checking for map
-configure:15207: result: yes
-configure:15213: checking vector usability
-configure:15213: g++ -c -g -O2  conftest.cpp >&5
-configure:15213: $? = 0
-configure:15213: result: yes
-configure:15213: checking vector presence
-configure:15213: g++ -E  conftest.cpp
-configure:15213: $? = 0
-configure:15213: result: yes
-configure:15213: checking for vector
-configure:15213: result: yes
-configure:15219: checking algorithm usability
-configure:15219: g++ -c -g -O2  conftest.cpp >&5
-configure:15219: $? = 0
-configure:15219: result: yes
-configure:15219: checking algorithm presence
-configure:15219: g++ -E  conftest.cpp
-configure:15219: $? = 0
-configure:15219: result: yes
-configure:15219: checking for algorithm
-configure:15219: result: yes
-configure:15225: checking string usability
-configure:15225: g++ -c -g -O2  conftest.cpp >&5
-configure:15225: $? = 0
-configure:15225: result: yes
-configure:15225: checking string presence
-configure:15225: g++ -E  conftest.cpp
-configure:15225: $? = 0
-configure:15225: result: yes
-configure:15225: checking for string
-configure:15225: result: yes
-configure:15285: checking for pkg-config
-configure:15303: found /usr/bin/pkg-config
-configure:15315: result: /usr/bin/pkg-config
-configure:15340: checking pkg-config is at least version 0.9.0
-configure:15343: result: yes
-configure:15353: checking for GLIBMM
-configure:15360: $PKG_CONFIG --exists --print-errors "glibmm-2.4 >= 2.30.0 gthread-2.0 >= 2.30.0"
-configure:15363: $? = 0
-configure:15376: $PKG_CONFIG --exists --print-errors "glibmm-2.4 >= 2.30.0 gthread-2.0 >= 2.30.0"
-configure:15379: $? = 0
-configure:15438: result: yes
-configure:15472: checking for stdbool.h that conforms to C99
-configure:15539: g++ -c -g -O2  conftest.cpp >&5
-configure:15539: $? = 0
-configure:15546: result: yes
-configure:15548: checking for _Bool
-configure:15548: g++ -c -g -O2  conftest.cpp >&5
+configure:12129: checking for ld used by g++
+configure:12196: result: /usr/bin/ld -m elf_x86_64
+configure:12203: checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld
+configure:12218: result: yes
+configure:12273: checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
+configure:13277: result: yes
+configure:13312: g++ -c -g -O2  conftest.cpp >&5
+configure:13315: $? = 0
+configure:13835: checking for g++ option to produce PIC
+configure:13842: result: -fPIC -DPIC
+configure:13850: checking if g++ PIC flag -fPIC -DPIC works
+configure:13868: g++ -c -g -O2  -fPIC -DPIC -DPIC conftest.cpp >&5
+configure:13872: $? = 0
+configure:13885: result: yes
+configure:13908: checking if g++ static flag -static works
+configure:13936: result: no
+configure:13948: checking if g++ supports -c -o file.o
+configure:13969: g++ -c -g -O2  -o out/conftest2.o conftest.cpp >&5
+configure:13973: $? = 0
+configure:13995: result: yes
+configure:14000: checking if g++ supports -c -o file.o
+configure:14047: result: yes
+configure:14077: checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
+configure:14111: result: yes
+configure:14254: checking dynamic linker characteristics
+configure:14928: result: GNU/Linux ld.so
+configure:14981: checking how to hardcode library paths into programs
+configure:15006: result: immediate
+configure:15066: checking whether make sets $(MAKE)
+configure:15088: result: yes
+configure:15111: checking for bash
+configure:15141: result: /bin/sh
+configure:15156: checking for python
+configure:15174: found /usr/bin/python
+configure:15186: result: /usr/bin/python
+configure:15202: checking iostream usability
+configure:15202: g++ -c -g -O2  conftest.cpp >&5
+configure:15202: $? = 0
+configure:15202: result: yes
+configure:15202: checking iostream presence
+configure:15202: g++ -E  conftest.cpp
+configure:15202: $? = 0
+configure:15202: result: yes
+configure:15202: checking for iostream
+configure:15202: result: yes
+configure:15208: checking map usability
+configure:15208: g++ -c -g -O2  conftest.cpp >&5
+configure:15208: $? = 0
+configure:15208: result: yes
+configure:15208: checking map presence
+configure:15208: g++ -E  conftest.cpp
+configure:15208: $? = 0
+configure:15208: result: yes
+configure:15208: checking for map
+configure:15208: result: yes
+configure:15214: checking vector usability
+configure:15214: g++ -c -g -O2  conftest.cpp >&5
+configure:15214: $? = 0
+configure:15214: result: yes
+configure:15214: checking vector presence
+configure:15214: g++ -E  conftest.cpp
+configure:15214: $? = 0
+configure:15214: result: yes
+configure:15214: checking for vector
+configure:15214: result: yes
+configure:15220: checking algorithm usability
+configure:15220: g++ -c -g -O2  conftest.cpp >&5
+configure:15220: $? = 0
+configure:15220: result: yes
+configure:15220: checking algorithm presence
+configure:15220: g++ -E  conftest.cpp
+configure:15220: $? = 0
+configure:15220: result: yes
+configure:15220: checking for algorithm
+configure:15220: result: yes
+configure:15226: checking string usability
+configure:15226: g++ -c -g -O2  conftest.cpp >&5
+configure:15226: $? = 0
+configure:15226: result: yes
+configure:15226: checking string presence
+configure:15226: g++ -E  conftest.cpp
+configure:15226: $? = 0
+configure:15226: result: yes
+configure:15226: checking for string
+configure:15226: result: yes
+configure:15286: checking for pkg-config
+configure:15304: found /usr/bin/pkg-config
+configure:15316: result: /usr/bin/pkg-config
+configure:15341: checking pkg-config is at least version 0.9.0
+configure:15344: result: yes
+configure:15354: checking for GLIBMM
+configure:15361: $PKG_CONFIG --exists --print-errors "glibmm-2.4 >= 2.30.0 gthread-2.0 >= 2.30.0"
+configure:15364: $? = 0
+configure:15377: $PKG_CONFIG --exists --print-errors "glibmm-2.4 >= 2.30.0 gthread-2.0 >= 2.30.0"
+configure:15380: $? = 0
+configure:15439: result: yes
+configure:15473: checking for stdbool.h that conforms to C99
+configure:15540: g++ -c -g -O2  conftest.cpp >&5
+configure:15540: $? = 0
+configure:15547: result: yes
+configure:15549: checking for _Bool
+configure:15549: g++ -c -g -O2  conftest.cpp >&5
 conftest.cpp: In function 'int main()':
 conftest.cpp:59:13: error: '_Bool' was not declared in this scope
- if (sizeof (_Bool))
-             ^
-configure:15548: $? = 1
+configure:15549: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "gander"
@@ -622,347 +610,38 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:15548: result: no
-configure:15564: checking for an ANSI C-conforming const
-configure:15629: g++ -c -g -O2  conftest.cpp >&5
-configure:15629: $? = 0
-configure:15636: result: yes
-configure:15647: checking whether to enable debugging
-configure:15673: result: yes
-configure:15733: checking for boostlib >= 1.47
-configure:15802: g++ -c -Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic  -I/home/gander/include conftest.cpp >&5
-configure:15802: $? = 0
-configure:15804: result: yes
-configure:15984: checking whether the Boost::Program_Options library is available
-configure:16008: g++ -c -Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic  -I/home/gander/include conftest.cpp >&5
+configure:15549: result: no
+configure:15565: checking for an ANSI C-conforming const
+configure:15630: g++ -c -g -O2  conftest.cpp >&5
+configure:15630: $? = 0
+configure:15637: result: yes
+configure:15648: checking whether to enable debugging
+configure:15669: checking whether C++ compiler accepts -std=c++0x
+configure:15688: g++ -c -g -O2  -std=c++0x  conftest.cpp >&5
+configure:15688: $? = 0
+configure:15697: result: yes
+configure:15707: checking whether C++ compiler accepts -std=gnu++0x
+configure:15726: g++ -c -g -O2  -std=gnu++0x  conftest.cpp >&5
+configure:15726: $? = 0
+configure:15735: result: yes
+configure:15751: result: yes
+configure:15811: checking for boostlib >= 1.47
+configure:15880: g++ -c -Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic  -I/home/gander/include conftest.cpp >&5
+configure:15880: $? = 0
+configure:15882: result: yes
+configure:16062: checking whether the Boost::Program_Options library is available
+configure:16086: g++ -c -Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic  -I/home/gander/include conftest.cpp >&5
 In file included from /home/gander/include/boost/program_options/options_description.hpp:12:0,
                  from /home/gander/include/boost/program_options.hpp:15,
                  from conftest.cpp:26:
 /home/gander/include/boost/program_options/errors.hpp:253:22: warning: unused parameter 'option_name' [-Wunused-parameter]
-         virtual void set_option_name(const std::string& option_name){}
-                      ^
-In file included from /home/gander/include/boost/math/special_functions/math_fwd.hpp:28:0,
-                 from /home/gander/include/boost/math/special_functions/sign.hpp:17,
-                 from /home/gander/include/boost/lexical_cast.hpp:147,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/math/policies/policy.hpp: In function 'int boost::math::policies::detail::digits_imp(const true_&)':
-/home/gander/include/boost/math/policies/policy.hpp:822:152: warning: typedef 'boost_static_assert_typedef_822' locally defined but not used [-Wunused-local-typedefs]
-    BOOST_STATIC_ASSERT( ::std::numeric_limits<T>::is_specialized);
-                                                                                                                                                        ^
-/home/gander/include/boost/math/policies/policy.hpp: In function 'T boost::math::policies::detail::get_epsilon_imp(const true_&)':
-/home/gander/include/boost/math/policies/policy.hpp:900:152: warning: typedef 'boost_static_assert_typedef_900' locally defined but not used [-Wunused-local-typedefs]
-    BOOST_STATIC_ASSERT( ::std::numeric_limits<T>::is_specialized);
-                                                                                                                                                        ^
-/home/gander/include/boost/math/policies/policy.hpp:901:148: warning: typedef 'boost_static_assert_typedef_901' locally defined but not used [-Wunused-local-typedefs]
-    BOOST_STATIC_ASSERT( ::std::numeric_limits<T>::radix == 2);
-                                                                                                                                                    ^
-In file included from /home/gander/include/boost/lexical_cast.hpp:147:0,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/math/special_functions/sign.hpp: In function 'int boost::math::signbit(T)':
-/home/gander/include/boost/math/special_functions/sign.hpp:113:55: warning: typedef 'fp_tag' locally defined but not used [-Wunused-local-typedefs]
-    typedef typename boost::is_floating_point<T>::type fp_tag;
-                                                       ^
-/home/gander/include/boost/math/special_functions/sign.hpp: In function 'T boost::math::changesign(const T&)':
-/home/gander/include/boost/math/special_functions/sign.hpp:127:55: warning: typedef 'fp_tag' locally defined but not used [-Wunused-local-typedefs]
-    typedef typename boost::is_floating_point<T>::type fp_tag;
-                                                       ^
-In file included from /home/gander/include/boost/lexical_cast.hpp:148:0,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/math/special_functions/fpclassify.hpp: In function 'bool boost::math::isfinite(T)':
-/home/gander/include/boost/math/special_functions/fpclassify.hpp:314:55: warning: typedef 'fp_tag' locally defined but not used [-Wunused-local-typedefs]
-    typedef typename boost::is_floating_point<T>::type fp_tag;
-                                                       ^
-In file included from /home/gander/include/boost/lexical_cast.hpp:148:0,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/math/special_functions/fpclassify.hpp: In function 'bool boost::math::isnormal(T)':
-/home/gander/include/boost/math/special_functions/fpclassify.hpp:373:55: warning: typedef 'fp_tag' locally defined but not used [-Wunused-local-typedefs]
-    typedef typename boost::is_floating_point<T>::type fp_tag;
-                                                       ^
-In file included from /home/gander/include/boost/lexical_cast.hpp:148:0,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/math/special_functions/fpclassify.hpp: In function 'bool boost::math::isinf(T)':
-/home/gander/include/boost/math/special_functions/fpclassify.hpp:450:55: warning: typedef 'fp_tag' locally defined but not used [-Wunused-local-typedefs]
-    typedef typename boost::is_floating_point<T>::type fp_tag;
-                                                       ^
-/home/gander/include/boost/math/special_functions/fpclassify.hpp: In function 'bool boost::math::isnan(T)':
-/home/gander/include/boost/math/special_functions/fpclassify.hpp:519:55: warning: typedef 'fp_tag' locally defined but not used [-Wunused-local-typedefs]
-    typedef typename boost::is_floating_point<T>::type fp_tag;
-                                                       ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::always_bool2, Derived1, Derived2>::type>::type boost::operator==(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:832:640: warning: typedef 'boost_static_assert_typedef_832' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_RELATION(==, return, equal)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::always_bool2, Derived1, Derived2>::type>::type boost::operator!=(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:833:640: warning: typedef 'boost_static_assert_typedef_833' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_RELATION(!=, return !, equal)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::always_bool2, Derived1, Derived2>::type>::type boost::operator<(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:835:639: warning: typedef 'boost_static_assert_typedef_835' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_RELATION(<, return 0 >, distance_from)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::always_bool2, Derived1, Derived2>::type>::type boost::operator>(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:836:639: warning: typedef 'boost_static_assert_typedef_836' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_RELATION(>, return 0 <, distance_from)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::always_bool2, Derived1, Derived2>::type>::type boost::operator<=(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:837:640: warning: typedef 'boost_static_assert_typedef_837' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_RELATION(<=, return 0 >=, distance_from)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::always_bool2, Derived1, Derived2>::type>::type boost::operator>=(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:838:640: warning: typedef 'boost_static_assert_typedef_838' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_RELATION(>=, return 0 <=, distance_from)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:23:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_facade.hpp: In function 'typename boost::detail::enable_if_interoperable<Derived1, Derived2, typename boost::mpl::apply2<boost::detail::choose_difference_type, Derived1, Derived2>::type>::type boost::operator-(const boost::iterator_facade<Derived1, V1, TC1, Reference1, Difference1>&, const boost::iterator_facade<Derived2, V2, TC2, Reference2, Difference2>&)':
-/home/gander/include/boost/iterator/iterator_facade.hpp:842:649: warning: typedef 'boost_static_assert_typedef_847' locally defined but not used [-Wunused-local-typedefs]
-   BOOST_ITERATOR_FACADE_INTEROP(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
-In file included from /home/gander/include/boost/iterator/reverse_iterator.hpp:12:0,
-                 from /home/gander/include/boost/range/reverse_iterator.hpp:20,
-                 from /home/gander/include/boost/range/rbegin.hpp:19,
-                 from /home/gander/include/boost/range/functions.hpp:23,
-                 from /home/gander/include/boost/range/iterator_range_core.hpp:26,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/iterator/iterator_adaptor.hpp: In function 'void boost::detail::iterator_adaptor_assert_traversal()':
-/home/gander/include/boost/iterator/iterator_adaptor.hpp:224:148: warning: typedef 'boost_static_assert_typedef_224' locally defined but not used [-Wunused-local-typedefs]
-       BOOST_STATIC_ASSERT((is_convertible<Tr1, Tr2>::value));
-                                                                                                                                                    ^
-In file included from /home/gander/include/boost/range/concepts.hpp:19:0,
-                 from /home/gander/include/boost/range/algorithm/equal.hpp:14,
-                 from /home/gander/include/boost/range/iterator_range_core.hpp:29,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/concept_check.hpp: In function 'void boost::function_requires(Model*)':
-/home/gander/include/boost/concept_check.hpp:45:113: warning: typedef 'boost_concept_check45' locally defined but not used [-Wunused-local-typedefs]
-       BOOST_CONCEPT_ASSERT((Model));
-                                                                                                                 ^
-In file included from /home/gander/include/boost/range/concepts.hpp:19:0,
-                 from /home/gander/include/boost/range/algorithm/equal.hpp:14,
-                 from /home/gander/include/boost/range/iterator_range_core.hpp:29,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::AdaptableGenerator<Func, Return>::~AdaptableGenerator()':
-/home/gander/include/boost/concept_check.hpp:453:144: warning: typedef 'boost_concept_check453' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<result_type, Return>));
-                                                                                                                                                ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::AdaptableUnaryFunction<Func, Return, Arg>::~AdaptableUnaryFunction()':
-/home/gander/include/boost/concept_check.hpp:465:144: warning: typedef 'boost_concept_check465' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<result_type, Return>));
-                                                                                                                                                ^
-/home/gander/include/boost/concept_check.hpp:466:143: warning: typedef 'boost_concept_check466' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<Arg, argument_type>));
-                                                                                                                                               ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::AdaptableBinaryFunction<Func, Return, First, Second>::~AdaptableBinaryFunction()':
-/home/gander/include/boost/concept_check.hpp:484:144: warning: typedef 'boost_concept_check484' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<result_type, Return>));
-                                                                                                                                                ^
-/home/gander/include/boost/concept_check.hpp:485:151: warning: typedef 'boost_concept_check485' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<First, first_argument_type>));
-                                                                                                                                                       ^
-/home/gander/include/boost/concept_check.hpp:486:153: warning: typedef 'boost_concept_check486' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<Second, second_argument_type>));
-                                                                                                                                                         ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::InputIterator<TT>::~InputIterator()':
-/home/gander/include/boost/concept_check.hpp:517:140: warning: typedef 'boost_concept_check517' locally defined but not used [-Wunused-local-typedefs]
-         BOOST_CONCEPT_ASSERT((SignedInteger<difference_type>));
-                                                                                                                                            ^
-/home/gander/include/boost/concept_check.hpp:518:165: warning: typedef 'boost_concept_check518' locally defined but not used [-Wunused-local-typedefs]
-         BOOST_CONCEPT_ASSERT((Convertible<iterator_category, std::input_iterator_tag>));
-                                                                                                                                                                     ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::ForwardIterator<TT>::~ForwardIterator()':
-/home/gander/include/boost/concept_check.hpp:548:198: warning: typedef 'boost_concept_check551' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<
-                                                                                                                                                                                                      ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::BidirectionalIterator<TT>::~BidirectionalIterator()':
-/home/gander/include/boost/concept_check.hpp:576:210: warning: typedef 'boost_concept_check579' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<
-                                                                                                                                                                                                                  ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::RandomAccessIterator<TT>::~RandomAccessIterator()':
-/home/gander/include/boost/concept_check.hpp:606:214: warning: typedef 'boost_concept_check609' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Convertible<
-                                                                                                                                                                                                                      ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::Container<C>::~Container()':
-/home/gander/include/boost/concept_check.hpp:653:141: warning: typedef 'boost_concept_check653' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((InputIterator<const_iterator>));
-                                                                                                                                             ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::Mutable_Container<C>::~Mutable_Container()':
-/home/gander/include/boost/concept_check.hpp:680:163: warning: typedef 'boost_concept_check681' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((
-                                                                                                                                                                   ^
-/home/gander/include/boost/concept_check.hpp:683:135: warning: typedef 'boost_concept_check683' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((InputIterator<iterator>));
-                                                                                                                                       ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::ForwardContainer<C>::~ForwardContainer()':
-/home/gander/include/boost/concept_check.hpp:700:173: warning: typedef 'boost_concept_check703' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((
-                                                                                                                                                                             ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::Mutable_ForwardContainer<C>::~Mutable_ForwardContainer()':
-/home/gander/include/boost/concept_check.hpp:713:183: warning: typedef 'boost_concept_check716' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((
-                                                                                                                                                                                       ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::ReversibleContainer<C>::~ReversibleContainer()':
-/home/gander/include/boost/concept_check.hpp:729:181: warning: typedef 'boost_concept_check731' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((
-                                                                                                                                                                                     ^
-/home/gander/include/boost/concept_check.hpp:733:157: warning: typedef 'boost_concept_check733' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((BidirectionalIterator<const_reverse_iterator>));
-                                                                                                                                                             ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::Mutable_ReversibleContainer<C>::~Mutable_ReversibleContainer()':
-/home/gander/include/boost/concept_check.hpp:755:151: warning: typedef 'boost_concept_check755' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Mutable_BidirectionalIterator<iterator>));
-                                                                                                                                                       ^
-/home/gander/include/boost/concept_check.hpp:756:159: warning: typedef 'boost_concept_check756' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Mutable_BidirectionalIterator<reverse_iterator>));
-                                                                                                                                                               ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::RandomAccessContainer<C>::~RandomAccessContainer()':
-/home/gander/include/boost/concept_check.hpp:773:183: warning: typedef 'boost_concept_check776' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((
-                                                                                                                                                                                       ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::Mutable_RandomAccessContainer<C>::~Mutable_RandomAccessContainer()':
-/home/gander/include/boost/concept_check.hpp:800:165: warning: typedef 'boost_concept_check800' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Mutable_RandomAccessIterator<typename self::iterator>));
-                                                                                                                                                                     ^
-/home/gander/include/boost/concept_check.hpp:801:173: warning: typedef 'boost_concept_check801' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((Mutable_RandomAccessIterator<typename self::reverse_iterator>));
-                                                                                                                                                                             ^
-/home/gander/include/boost/concept_check.hpp: In destructor 'boost::AssociativeContainer<C>::~AssociativeContainer()':
-/home/gander/include/boost/concept_check.hpp:905:158: warning: typedef 'boost_concept_check905' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((BinaryPredicate<key_compare,key_type,key_type>));
-                                                                                                                                                              ^
-/home/gander/include/boost/concept_check.hpp:908:166: warning: typedef 'boost_concept_check908' locally defined but not used [-Wunused-local-typedefs]
-           BOOST_CONCEPT_ASSERT((BinaryPredicate<value_compare,value_type_,value_type_>));
-                                                                                                                                                                      ^
-In file included from /home/gander/include/boost/range/iterator_range_core.hpp:29:0,
-                 from /home/gander/include/boost/lexical_cast.hpp:149,
-                 from /home/gander/include/boost/program_options/value_semantic.hpp:14,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/range/algorithm/equal.hpp: In function 'bool boost::range::equal(const SinglePassRange1&, const SinglePassRange2&)':
-/home/gander/include/boost/range/algorithm/equal.hpp:172:162: warning: typedef 'boost_concept_check172' locally defined but not used [-Wunused-local-typedefs]
-             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-                                                                                                                                                                  ^
-/home/gander/include/boost/range/algorithm/equal.hpp:173:162: warning: typedef 'boost_concept_check173' locally defined but not used [-Wunused-local-typedefs]
-             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-                                                                                                                                                                  ^
-/home/gander/include/boost/range/algorithm/equal.hpp: In function 'bool boost::range::equal(const SinglePassRange1&, const SinglePassRange2&, BinaryPredicate)':
-/home/gander/include/boost/range/algorithm/equal.hpp:185:162: warning: typedef 'boost_concept_check185' locally defined but not used [-Wunused-local-typedefs]
-             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-                                                                                                                                                                  ^
-/home/gander/include/boost/range/algorithm/equal.hpp:186:162: warning: typedef 'boost_concept_check186' locally defined but not used [-Wunused-local-typedefs]
-             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-                                                                                                                                                                  ^
-In file included from /home/gander/include/boost/program_options/value_semantic.hpp:14:0,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/lexical_cast.hpp: In function 'CharT* boost::detail::lcast_put_unsigned(T, CharT*)':
-/home/gander/include/boost/lexical_cast.hpp:560:155: warning: typedef 'boost_static_assert_typedef_560' locally defined but not used [-Wunused-local-typedefs]
-             BOOST_STATIC_ASSERT(!std::numeric_limits<T>::is_signed);
-                                                                                                                                                           ^
-/home/gander/include/boost/lexical_cast.hpp:585:163: warning: typedef 'boost_static_assert_typedef_585' locally defined but not used [-Wunused-local-typedefs]
-                 BOOST_STATIC_ASSERT(std::numeric_limits<T>::digits10 < CHAR_MAX);
-                                                                                                                                                                   ^
-/home/gander/include/boost/lexical_cast.hpp: In function 'bool boost::detail::lcast_ret_unsigned(T&, const CharT*, const CharT*)':
-/home/gander/include/boost/lexical_cast.hpp:639:155: warning: typedef 'boost_static_assert_typedef_639' locally defined but not used [-Wunused-local-typedefs]
-             BOOST_STATIC_ASSERT(!std::numeric_limits<T>::is_signed);
-                                                                                                                                                           ^
-/home/gander/include/boost/lexical_cast.hpp:641:47: warning: typedef 'int_type' locally defined but not used [-Wunused-local-typedefs]
-             typedef typename Traits::int_type int_type;
-                                               ^
-In file included from /home/gander/include/boost/program_options/value_semantic.hpp:14:0,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/lexical_cast.hpp: In member function 'bool boost::detail::lexical_stream_limited_src<CharT, Traits, RequiresStringbuffer>::shl_char(T)':
-/home/gander/include/boost/lexical_cast.hpp:1240:154: warning: typedef 'boost_static_assert_typedef_1242' locally defined but not used [-Wunused-local-typedefs]
-                 BOOST_STATIC_ASSERT_MSG(( sizeof(T) <= sizeof(CharT)) ,
-                                                                                                                                                          ^
-/home/gander/include/boost/lexical_cast.hpp: In member function 'bool boost::detail::lexical_stream_limited_src<CharT, Traits, RequiresStringbuffer>::shl_char_array(const T*)':
-/home/gander/include/boost/lexical_cast.hpp:1266:154: warning: typedef 'boost_static_assert_typedef_1268' locally defined but not used [-Wunused-local-typedefs]
-                 BOOST_STATIC_ASSERT_MSG(( sizeof(T) <= sizeof(CharT)),
-                                                                                                                                                          ^
-In file included from /home/gander/include/boost/program_options/value_semantic.hpp:14:0,
-                 from /home/gander/include/boost/program_options/options_description.hpp:13,
-                 from /home/gander/include/boost/program_options.hpp:15,
-                 from conftest.cpp:26:
-/home/gander/include/boost/lexical_cast.hpp: In member function 'bool boost::detail::lexical_stream_limited_src<CharT, Traits, RequiresStringbuffer>::shr_xchar(T&)':
-/home/gander/include/boost/lexical_cast.hpp:1632:155: warning: typedef 'boost_static_assert_typedef_1634' locally defined but not used [-Wunused-local-typedefs]
-                 BOOST_STATIC_ASSERT_MSG(( sizeof(CharT) == sizeof(T) ),
-                                                                                                                                                           ^
-configure:16008: $? = 0
-configure:16022: result: yes
-configure:16033: checking for exit in -lboost_program_options
-configure:16058: g++ -o conftest -Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic  -I/home/gander/include  -L/home/gander/lib64 conftest.cpp -lboost_program_options   >&5
-configure:16058: $? = 0
-configure:16068: result: yes
-configure:16361: creating ./config.status
+configure:16086: $? = 0
+configure:16100: result: yes
+configure:16111: checking for exit in -lboost_program_options
+configure:16136: g++ -o conftest -Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic  -I/home/gander/include  -L/home/gander/lib64 conftest.cpp -lboost_program_options   >&5
+configure:16136: $? = 0
+configure:16146: result: yes
+configure:16439: creating ./config.status
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -979,16 +658,17 @@ generated by GNU Autoconf 2.68.  Invocation command line was
 
 on agander.localdomain
 
-config.status:1186: creating buildCtags
-config.status:1186: creating create_autoconf_skeleton
-config.status:1186: creating need_to_run_autoreconf
-config.status:1186: creating Makefile
-config.status:1186: creating testsuite/Makefile
-config.status:1186: creating gander.spec
-config.status:1186: creating include/Makefile
-config.status:1186: creating config.h
-config.status:1415: executing depfiles commands
-config.status:1415: executing libtool commands
+config.status:1187: creating buildCtags
+config.status:1187: creating create_autoconf_skeleton
+config.status:1187: creating need_to_run_autoreconf
+config.status:1187: creating Makefile
+config.status:1187: creating testsuite/Makefile
+config.status:1187: creating gander.spec
+config.status:1187: creating include/Makefile
+config.status:1187: creating config.h
+config.status:1368: config.h is unchanged
+config.status:1416: executing depfiles commands
+config.status:1416: executing libtool commands
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -1080,6 +760,8 @@ ac_cv_type__Bool=no
 am_cv_CC_dependencies_compiler_type=gcc3
 am_cv_CXX_dependencies_compiler_type=gcc3
 ax_cv_boost_program_options=yes
+ax_cv_check_cxxflags___std_cpp0x=yes
+ax_cv_check_cxxflags___std_gnupp0x=yes
 lt_cv_ar_at_file=@
 lt_cv_archive_cmds_need_lc=no
 lt_cv_deplibs_check_method=pass_all
@@ -1208,6 +890,7 @@ RPM_SOURCE_DIR='/home/gander/RPM/topdir/SOURCES'
 SED='/bin/sed'
 SET_MAKE=''
 SHELL='/bin/sh'
+STDCXX_0X_CFLAGS='-std=c++0x  -std=gnu++0x'
 STRIP='strip'
 VERSION='0.0.4'
 ac_ct_AR='ar'
@@ -1293,3 +976,105 @@ target_alias=''
 #define HAVE_BOOST_PROGRAM_OPTIONS /**/
 
 configure: exit 0
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by gander config.status 0.0.4, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status buildCtags
+
+on agander.localdomain
+
+config.status:1187: creating buildCtags
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by gander config.status 0.0.4, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status create_autoconf_skeleton
+
+on agander.localdomain
+
+config.status:1187: creating create_autoconf_skeleton
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by gander config.status 0.0.4, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status need_to_run_autoreconf
+
+on agander.localdomain
+
+config.status:1187: creating need_to_run_autoreconf
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by gander config.status 0.0.4, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status buildCtags
+
+on agander.localdomain
+
+config.status:1187: creating buildCtags
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by gander config.status 0.0.4, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status create_autoconf_skeleton
+
+on agander.localdomain
+
+config.status:1187: creating create_autoconf_skeleton
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by gander config.status 0.0.4, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status need_to_run_autoreconf
+
+on agander.localdomain
+
+config.status:1187: creating need_to_run_autoreconf

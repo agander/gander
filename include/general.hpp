@@ -26,6 +26,10 @@
 #include <deque>
 #include <set>
 
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+
 //using namespace std;
 
 using std::cout;
@@ -52,6 +56,50 @@ typedef std::tuple<
     std::vector< long >,            // 
     size_t                  // 
 > vec_long_size_tup_t;
+
+
+//! \fn time_seed
+//! \copyright May be freely redistributed, but copyright notice must be retained.
+//! \date 22 Jan 2004 22:59. Copyright © 2004 
+//! \author  Ben Pfaff.
+//! \uri <http://benpfaff.org/writings/clc/random-seed.html>
+//! \par How should I pick the value to pass to srand()?
+//! By default, the C random number generator produces the same sequence every 
+//! time the program is run. In order to generate different sequences, it has 
+//! to be “seeded” using srand() with a different value each time.
+//! The function below to do this is carefully designed.
+//! It uses time() to obtain the current time; the alternative clock() 
+//! is a poor choice because it measures CPU time used, which may vary little 
+//! from run to run. The actual value of a time_t is not portable, 
+//! so it computes a “hash” of the bytes in it using a multiply-and-add technique.
+//! The factor used for multiplication normally comes out as 257, a prime and therefore a good candidate.
+//! References: Knuth, The Art of Computer Programming, Vol. 2: Seminumerical Algorithms, section 3.2.1;
+//! Aho, Sethi, and Ullman, Compilers: Principles, Techniques, and Tools, section 7.6.
+//! 
+//! \brief Choose and return an initial random seed based on the current time.
+//! Based on code by Lawrence Kirby <fred@genesis.demon.co.uk>.
+//! \usage : srand (time_seed ());
+//! \param None
+//! \return unsigned
+
+unsigned time_seed( void )
+{
+    std::time_t timeval;   /* Current time. */
+    unsigned char *ptr;   /* Type punned pointed into timeval. */
+    unsigned seed;    /* Generated seed. */
+    std::size_t idx;
+    
+    timeval = std::time( NULL );
+    ptr = (unsigned char *) &timeval;
+    
+    seed = 0;
+    for (idx = 0; idx < sizeof timeval; ++idx )
+    {
+        seed = seed * (UCHAR_MAX + 2u) + ptr[idx];
+    }
+    
+    return seed;
+}
 
 
 template< typename T = std::size_t >

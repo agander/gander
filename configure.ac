@@ -85,6 +85,14 @@ AC_SUBST([DEJAGNU])
 
 AC_SUBST([DEJATOOL], [length])
 
+dnl Checks for c++0x GCC switch
+AC_SUBST([STDCXX_0X_CFLAGS]) 
+AX_CHECK_COMPILE_FLAG([-std=c++0x],
+                      [STDCXX_0X_CFLAGS="-std=c++0x "])
+
+AX_CHECK_COMPILE_FLAG([-std=gnu++0x],
+                      [STDCXX_0X_CFLAGS+=" -std=gnu++0x"])
+
 dnl Checks for libraries
 if [ ! test "x$enable_debug" != "xyes"]; then
   AC_DEFINE([DEBUG], [1], [Define to enable debug build: '-gdwarf-2 -O0'])

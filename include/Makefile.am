@@ -8,5 +8,5 @@ include_HEADERS  = dbgoutput.hpp general.hpp
 
 #include_ganderdir = $(includedir)/$(PACKAGE_NAME)
 
-#include_gander_HEADERS = length.hpp dbgoutput.hpp
+#include_gander_HEADERS = length.hpp dbgoutput.hpp general.hpp
 

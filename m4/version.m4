@@ -1,1 +1,1 @@
-define([VERSION_NUMBER],[0.0.4])
+define([VERSION_NUMBER],[0.0.5])

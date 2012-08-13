@@ -7,10 +7,10 @@ AUTOMAKE_OPTIONS = dejagnu
 
 ACLOCAL_AMFLAGS   =  -I m4
 
-SUBDIRS = . include testsuite
+SUBDIRS = testsuite include 
 
-INCLUDES = -I$(top_srcdir) $(GLIBMM_CFLAGS)
-LIBS		= $(GLIBMM_LIBS)
+INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
+#LIBS		= $(GLIBMM_LIBS)
 
 bin_PROGRAMS   =  length
 
@@ -25,23 +25,23 @@ length_CXXFLAGS = -pthread $(GLIBMM_CFLAGS)
 length_LDADD    =  $(BOOST_PROGRAM_OPTIONS_LIB) $(GLIBMM_LIBS)
 length_LDFLAGS  = $(BOOST_LDFLAGS)
 
-EXTRA_DIST  = dbgoutput.hpp
+#EXTRA_DIST  = dbgoutput.hpp
 
-include_ganderdir = $(includedir)/$(PACKAGE_NAME)
+#include_ganderdir = $(includedir)/$(PACKAGE_NAME)
 
-include_gander_HEADERS = length.hpp dbgoutput.hpp
+#include_gander_HEADERS = length.hpp dbgoutput.hpp general.hpp
 
 DISTCLEANFILES =  .deps/*.Po
 
 dist_bin_SCRIPTS	=	buildCtags \
-					    create_autoconf_skeleton \
-						need_to_run_autoreconf
+				create_autoconf_skeleton \
+				need_to_run_autoreconf
 
 BUILDCTAGSSOURCES	=	buildCtags.in
 
 CREATE_AUTOCONF_SKELETONSOURCES	= create_autoconf_skeleton.in
 
-NEED_TO_RUN_AUTORECONFSOURCES = need_to_run_autoreconf.in
+#NEED_TO_RUN_AUTORECONFSOURCES = need_to_run_autoreconf.in
 
 CLEANFILES = $(dist_bin_SCRIPTS)
 
@@ -94,10 +94,17 @@ rpm: distcheck dist
 
 #MYLOGIN_LIB = $(top_builddir)/libmylogin.la
 
-check_PROGRAMS	=	length
+check_PROGRAMS	=	test_time_seed
 #check_SCRIPTS	=	buildCtags
-#TESTS = $(check_PROGRAMS) $(check_SCRIPTS)
 
+TESTS = $(check_PROGRAMS)
+
+
+test_time_seed_SOURCES   =  test_time_seed.cpp 
+#general.hpp
+test_time_seed_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include
+#test_time_seed_LDFLAGS = -lxerces-c
+test_time_seed_CPPFLAGS = $(BOOST_CPPFLAGS) @STDCXX_0X_CFLAGS@
 
 #rm -fr t/
 #mkdir t && cd t/ && mkdir dtmpl.dir && \

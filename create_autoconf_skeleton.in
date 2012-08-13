@@ -32,7 +32,7 @@ ONEUP_WD=$(dirname ${PWD})
 while getopts "d:p:iho" OPTION
 do
   case ${OPTION} in
-    h     ) echo "${USAGE}" && exit 1;;
+    h     ) echo -e "${USAGE}" && exit 1;;
     d     ) PROJECT_DIR=${OPTARG};;
     p     ) PROJECT_NAME=${OPTARG};;
     i     ) SVN_IMPORT=1;;
