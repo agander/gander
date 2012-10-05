@@ -1,11 +1,11 @@
 %define name @PACKAGE_TARNAME@
 
 Name: @PACKAGE_TARNAME@
-Summary: General include files and C++ functions.
+Summary: General include files and C++ functions
 Group: Utilities
 Version: @VERSION@
 Release: @RELEASE@
-License: GPL
+License: GPLv3
 #BuildHost: %{_hostname}
 
 Source: @PACKAGE_TARNAME@-@VERSION@.tar.gz
@@ -14,18 +14,20 @@ URL: git://agander/@PACKAGE_TARNAME@.git
 BuildRoot: %{_tmppath}/%{name}-root
 Prefix: %{_prefix}
 
-Provides: %{name} = %{version}-%{release}
+#Provides: %{name} = %{version}-%{release}
 
 %description
-Various program:
-- length: output the length oa string;
+Various utility programs:
+- length: output the length of a string;
 - buildCtags: Create/update the vim ctags file from all include/ directories;
-- create_autoconf_skeleton: Create a autoconf/cmake project suitable for KDevelop.
-- dbgoutput.hpp: Provides a functiod for displaying messages during development.
-- general.hpp: strtolong<>(): Template functiod to convert strings to long.
+- create_autoconf_skeleton: Create a autoconf/cmake project suitable for 
+KDevelop;
+- dbgoutput.hpp: Provides a functiod for displaying messages during 
+development;
+- general.hpp: strtolong<>(): Templated functiod to convert strings to long.
 
 %prep
-%setup
+%setup -q
 
 %build
 #%configure --prefix %{_prefix} --with-boost=@BOOST_PATH@ 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
@@ -33,6 +35,8 @@ Various program:
 %configure --prefix %{_prefix} --with-boost=%{_boost_path} 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
 #%configure @DISTCHECK_CONFIGURE_FLAGS@
 make LDFLAGS+="-Wl,--build-id"
+
+%check
 make check
 
 %install
@@ -43,12 +47,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-#%_bindir/length
+%_bindir/length
 %_bindir/buildCtags
 %_bindir/create_autoconf_skeleton
 %_includedir/dbgoutput.hpp
 %_includedir/general.hpp
-
+#%_includedir/@PACKAGE_TARNAME@/dbgoutput.hpp
+#%_includedir/@PACKAGE_TARNAME@/general.hpp
+%_libdir/pkgconfig/dbgoutput.pc
 
 #%files -n %{name}-devel
 #%defattr(-,root,root)
@@ -56,19 +62,18 @@ rm -rf $RPM_BUILD_ROOT
 #%_includedir/mylogin_class.hpp
 
 #%doc AUTHORS ChangeLog COPYING INSTALL NEWS README
+%doc  ChangeLog COPYING INSTALL README
 ##%_defaultdocdir %{_prefix}/share/doc/%{name}
 #%docdir %{_prefix}/share/doc/%{name}/AUTHORS
-#%docdir %{_prefix}/share/doc/%{name}/ChangeLog
-#%docdir %{_prefix}/share/doc/%{name}/COPYING
-#%docdir %{_prefix}/share/doc/%{name}/INSTALL
+%docdir %{_prefix}/share/doc/%{name}/ChangeLog
+%docdir %{_prefix}/share/doc/%{name}/COPYING
+%docdir %{_prefix}/share/doc/%{name}/INSTALL
 #%docdir %{_prefix}/share/doc/%{name}/NEWS
-#%docdir %{_prefix}/share/doc/%{name}/README
+%docdir %{_prefix}/share/doc/%{name}/README
 ##%docdir %/AUTHORS
 ##%docdir/ChangeLog
 ##%docdir/COPYING
 ##%docdir/INSTALL
 ##%docdir/NEWS
 ##%docdir/README
-
-%changelog
 

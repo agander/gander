@@ -5,42 +5,32 @@
 AUTOMAKE_OPTIONS = dejagnu
 #AUTOMAKE_OPTIONS = gnu
 
-ACLOCAL_AMFLAGS   =  -I m4
+ACLOCAL_AMFLAGS	= -I .build ${ACLOCAL_FLAGS}
 
 SUBDIRS = testsuite include 
 
-INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
+AM_INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
 #LIBS		= $(GLIBMM_LIBS)
 
 bin_PROGRAMS   =  length
 
-length_SOURCES   =  length.cpp length.hpp
-
-#length_CPPFLAGS = -DDEBUG -ggdb -D__USE_STD_IOSTREAM 
-
-#length_LDFLAGS = -lxerces-c
-
-length_CPPFLAGS = $(BOOST_CPPFLAGS)
+length_SOURCES  =  length.cpp
+length_CPPFLAGS = $(BOOST_CPPFLAGS) @DEBUG_CFLAGS@ -I$(top_srcdir)/include
 length_CXXFLAGS = -pthread $(GLIBMM_CFLAGS)
 length_LDADD    =  $(BOOST_PROGRAM_OPTIONS_LIB) $(GLIBMM_LIBS)
 length_LDFLAGS  = $(BOOST_LDFLAGS)
 
-#EXTRA_DIST  = dbgoutput.hpp
-
-#include_ganderdir = $(includedir)/$(PACKAGE_NAME)
-
-#include_gander_HEADERS = length.hpp dbgoutput.hpp general.hpp
+#EXTRA_DIST	=  length.hpp
 
 DISTCLEANFILES =  .deps/*.Po
 
-dist_bin_SCRIPTS	=	buildCtags \
-				create_autoconf_skeleton \
-				need_to_run_autoreconf
-
+dist_bin_SCRIPTS	=	buildCtags
 BUILDCTAGSSOURCES	=	buildCtags.in
 
+dist_bin_SCRIPTS	+=	create_autoconf_skeleton
 CREATE_AUTOCONF_SKELETONSOURCES	= create_autoconf_skeleton.in
 
+#dist_bin_SCRIPTS	=	need_to_run_autoreconf
 #NEED_TO_RUN_AUTORECONFSOURCES = need_to_run_autoreconf.in
 
 CLEANFILES = $(dist_bin_SCRIPTS)
@@ -51,13 +41,14 @@ do_subst = sed -e 's,[@]datadir[@],$(datadir),g' \
            -e 's,[@]PERL[@],$(PERL),g' \
            -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
            -e 's,[@]VERSION[@],$(VERSION),g'
-     
+
+ 
 
 # RPM generation steps.
 #rpmbuild --define="_prefix $(prefix)" --define="boost_path ${ac_boost_path}" -ba pword.spec
 rpm: distcheck dist
 	cp -p $(distdir).tar.gz @RPM_SOURCE_DIR@
-	rpmbuild --define="_prefix $(prefix)" --define="_boost_path ${BOOST_PATH}" -ba gander.spec
+	rpmbuild --sign --define="_prefix $(prefix)" --define="_boost_path ${BOOST_PATH}" -ba @PACKAGE_TARNAME@.spec
 
 
 #buildCtags: buildCtags.in Makefile
@@ -79,11 +70,14 @@ rpm: distcheck dist
 ##libmylogin_la_LDFLAGS  = -version-info 1:0 -lmysqlpp -lmysqlclient_r
 #libmylogin_la_LDFLAGS  = -version-info 1:0 $(GLIBMM_LIBS)
 
-
 #pkgincludedir = $(includedir)
 #libmylogindir  =  $(pkgincludedir)
-#pkgconfigdir		= $(libdir)/pkgconfig
-#pkgconfig_DATA		= libmylogin.pc
+
+#pkgconfigdir = $(libdir)/pkgconfig
+#nodist_pkgconfig_DATA = glib/$(GLIBMM_MODULE_NAME).pc gio/$(GIOMM_MODULE_NAME).pc
+
+pkgconfigdir		= $(libdir)/pkgconfig
+pkgconfig_DATA		= dbgoutput.pc
 
 #libmylogin_includedir=$(pkgincludedir)
 #libmylogin_include_HEADERS = mylogin_class.hpp
@@ -99,12 +93,11 @@ check_PROGRAMS	=	test_time_seed
 
 TESTS = $(check_PROGRAMS)
 
-
 test_time_seed_SOURCES   =  test_time_seed.cpp 
 #general.hpp
-test_time_seed_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include
+test_time_seed_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include \
+						  $(BOOST_CPPFLAGS) @STDCXX_0X_CFLAGS@ @DEBUG_CFLAGS@
 #test_time_seed_LDFLAGS = -lxerces-c
-test_time_seed_CPPFLAGS = $(BOOST_CPPFLAGS) @STDCXX_0X_CFLAGS@
 
 #rm -fr t/
 #mkdir t && cd t/ && mkdir dtmpl.dir && \

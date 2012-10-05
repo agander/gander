@@ -1,0 +1,52 @@
+#!@BASH@
+# -*- coding: utf-8 -*-
+
+[[ -n "${DEBUG}" ]] && set -x
+
+USAGE="$(basename ${0}) a 'make' target"
+
+# If there aren't any parms then has var PROG been set?
+# Use that if it has.
+
+if [[ ${#} -lt 1 ]]
+then
+    if [[ -z "${PROG}" ]]
+    then
+        echo "${USAGE}"
+        exit 1
+    fi
+else
+    PROG=${1}
+fi
+
+# Set up known vars.
+declare MAKEFILE_AM=Makefile.am
+declare CONFIGURE_AC=configure.ac
+
+# Call unix stat and get last modification date/time, as epoch date, 
+# on declare -i PROG_MTIME_SECS=$(stat --format=%Y ${PROG})
+
+declare -i MFAM_MTIME_SECS=$(stat --format=%Y ${MAKEFILE_AM})
+declare -i CFAC_MTIME_SECS=$(stat --format=%Y ${CONFIGURE_AC})
+
+# Set a response var to 0.
+declare -i RES=0
+
+# Find out if the ${PROG} is younger than Makefile.am or configure.ac
+if [[ ${MFAM_MTIME_SECS} > ${PROG_MTIME_SECS} ]]
+then
+    [[ -n "${DEBUG}" ]] && echo " ${MAKEFILE_AM} is younger than ${PROG}"
+    RES=1
+fi
+if [[ ${CFAC_MTIME_SECS} > ${PROG_MTIME_SECS} ]]
+then
+    [[ -n "${DEBUG}" ]] && echo " ${CONFIGURE_AC} is younger than ${PROG}"
+    RES=1
+fi
+
+[[ -n "${DEBUG}" ]] && set | egrep "MAKEFILE|CONFIGURE|PROG|RES|SECS"
+
+# Return the value of the reponse var.
+# To be checked by testing ${?} in the enclosing shell.
+exit ${RES}
+

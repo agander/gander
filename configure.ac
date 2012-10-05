@@ -3,12 +3,13 @@
 AC_PREREQ([2.68])
 m4_include([m4/version.m4])
 AC_INIT([gander], [VERSION_NUMBER], [agander@gmail.com])
+AC_CONFIG_AUX_DIR([.build])
+AC_CONFIG_MACRO_DIR([.build])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([configure.ac])
 AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
-AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -95,10 +96,10 @@ AX_CHECK_COMPILE_FLAG([-std=gnu++0x],
 
 dnl Checks for libraries
 if [ ! test "x$enable_debug" != "xyes"]; then
-  AC_DEFINE([DEBUG], [1], [Define to enable debug build: '-gdwarf-2 -O0'])
-  AC_SUBST([DEBUG_CFLAGS])
+  AC_DEFINE([DEBUG], [1], [Define to enable debug build: '-gdwarf-4 -O0' and '-DDEBUG'])
+  AC_SUBST([DEBUG_CFLAGS], [-DDEBUG])
   AC_SUBST([DEBUG_LIBS])
-  CXXFLAGS="-Wall -Wextra -gdwarf-2 -O0 -m64 -mtune=generic"
+  CXXFLAGS="-Wall -Wextra -gdwarf-4 -O0 -m64 -mtune=generic"
   AC_MSG_RESULT([yes])
 else
   AC_MSG_RESULT([no])
@@ -128,11 +129,16 @@ AX_BOOST_PROGRAM_OPTIONS
 dnl Checks for Boost home/root
 BOOST_PATH=${ac_boost_path}
 AC_SUBST([BOOST_PATH])
+if test -z $BOOST_PATH
+then
+    AC_SUBST([BOOST_PATH], ['/usr'])
+fi
 
 # Pass ./configure args to distcheck target otherwise it runs 
 # a basic ./configure which isnt the 'make distcheck' you really want.
 DISTCHECK_CONFIGURE_FLAGS="${ac_configure_args}"
 AC_SUBST([DISTCHECK_CONFIGURE_FLAGS])
+#DISTCHECK_CONFIGURE_FLAGS = --enable-warnings=fatal
 
 AC_SUBST([RELEASE_NUMBER], [1])
 AC_SUBST([RELEASE], [1])
@@ -148,15 +154,14 @@ AC_SUBST([RPM_INSTALL_PREFIX0])
 
 AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
 AC_CONFIG_FILES([create_autoconf_skeleton], [chmod +x create_autoconf_skeleton])
-AC_CONFIG_FILES([need_to_run_autoreconf], [chmod +x need_to_run_autoreconf])
+#AC_CONFIG_FILES([need_to_run_autoreconf], [chmod +x need_to_run_autoreconf])
 
 AC_CONFIG_FILES([
     Makefile
     testsuite/Makefile
     gander.spec
     include/Makefile
+    dbgoutput.pc
 ])
-#   gander.pc
-#   tests/atlocal
 
 AC_OUTPUT

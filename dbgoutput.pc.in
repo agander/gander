@@ -1,0 +1,21 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@includedir@
+
+
+#docdir=${datarootdir}/doc/@PACKAGE_NAME@
+#doxytagfile=${docdir}/reference/@PACKAGE_NAME@.tag
+#htmlrefdir=${docdir}/reference/html
+#htmlrefpub=http://library.gnome.org/devel/@PACKAGE_TARNAME@/unstable/
+
+Name: dbgoutput
+Description: Functiod to display message during development.
+Version: @PACKAGE_VERSION@
+URL: git://agander/@PACKAGE_TARNAME@.git
+Requires: glibmm-2.4
+#Libs: -L${libdir} -lglibmm-@GLIBMM_API_VERSION@
+Cflags: -I${includedir}/
+

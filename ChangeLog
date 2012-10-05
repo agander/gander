@@ -1,4 +1,12 @@
 
+
+2012-10-05 21:43 Giles Anderson<agander@gmail.com>
+ * [0.0.5]: Final for version.
+ * RPM built successfully and installed to /usr/local.
+ * So that I can use utils via ~scidb.
+ * pkg-config file created for dbgoutput.
+ * TODO: rpmbuild --sign didne work! Need to remedy!
+
 2012-07-31 15:48 Giles Anderson<agander@gmail.com>
  * [0.0.4]: Final for version.
  * RPM updated to include general.hpp.
@@ -27,4 +35,5 @@
 2010-10-24 10:37:57 +0100 Giles Anderson <agander@gmail.com>
  * [0.0.1]: Initial state for version: 
  * 1st version only secures ~/bin scripts.
+
 

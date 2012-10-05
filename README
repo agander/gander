@@ -1,0 +1,20 @@
+
+
+Good things to have in the README include:
+
+A brief description of the project.
+
+A pointer to the project website (if it has one)
+
+Notes on the developer's build environment and potential portability problems.
+
+A roadmap describing important files and subdirectories.
+
+Either build/installation instructions or a pointer to a file containing same (usually INSTALL).
+
+A copyright notice, usually COPYING.
+
+Either a maintainers/credits list or a pointer to a file containing same (usually AUTHORS).
+
+Either recent project news or a pointer to a file containing same (usually NEWS).
+

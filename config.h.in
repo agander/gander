@@ -1,6 +1,6 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* Define to enable debug build: '-gdwarf-2 -O0' */
+/* Define to enable debug build: '-gdwarf-4 -O0' and '-DDEBUG' */
 #undef DEBUG
 
 /* define if the Boost library is available */
