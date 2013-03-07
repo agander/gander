@@ -1,6 +1,5 @@
 
 #include <iostream>
-#include <iostream>
 #include <stdexcept>
 
 using std::cout;

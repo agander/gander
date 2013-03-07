@@ -20,6 +20,9 @@ EXPECT = expect
 check-length: site.exp
 	$(RUNTEST) length.exp
 
+check-timeseed:	site.exp
+	$(RUNTEST) timeseed.exp
+
 DISTCLEANFILES =  testrun.sum \
 				  testrun.log
 

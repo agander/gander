@@ -3,13 +3,14 @@
 AC_PREREQ([2.68])
 m4_include([m4/version.m4])
 AC_INIT([gander], [VERSION_NUMBER], [agander@gmail.com])
-AC_CONFIG_AUX_DIR([.build])
-AC_CONFIG_MACRO_DIR([.build])
+AC_CONFIG_AUX_DIR([build])
+AC_CONFIG_MACRO_DIR([build])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([configure.ac])
 AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
+AC_CONFIG_TESTDIR([tests])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -78,10 +79,12 @@ AC_ARG_ENABLE([debug],
         [  --enable-debug=[no/yes]        enables debug build (default=no)],,
                  enable_debug=no)
 
+dnl Checks for c++0x GCC switch
 if test x"$DEJAGNU" = x
 then
   DEJAGNU="\$(top_srcdir)/testsuite/site.exp"
 fi
+
 AC_SUBST([DEJAGNU])
 
 AC_SUBST([DEJATOOL], [length])
@@ -94,7 +97,15 @@ AX_CHECK_COMPILE_FLAG([-std=c++0x],
 AX_CHECK_COMPILE_FLAG([-std=gnu++0x],
                       [STDCXX_0X_CFLAGS+=" -std=gnu++0x"])
 
-dnl Checks for libraries
+dnl Checks for the DEBUG options request.
+#m4_include([m4/debug.m4])
+#AC_COMPILE_DEBUG
+dnl Check for option to enable debug
+AC_MSG_CHECKING([whether to enable debugging])
+AC_ARG_ENABLE([debug],
+        [  --enable-debug=[no/yes]        enables debug build (default=no)],,
+                 enable_debug=no)
+
 if [ ! test "x$enable_debug" != "xyes"]; then
   AC_DEFINE([DEBUG], [1], [Define to enable debug build: '-gdwarf-4 -O0' and '-DDEBUG'])
   AC_SUBST([DEBUG_CFLAGS], [-DDEBUG])
@@ -156,12 +167,16 @@ AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
 AC_CONFIG_FILES([create_autoconf_skeleton], [chmod +x create_autoconf_skeleton])
 #AC_CONFIG_FILES([need_to_run_autoreconf], [chmod +x need_to_run_autoreconf])
 
+AC_CONFIG_FILES([test_serial], [chmod +x test_serial])
+
 AC_CONFIG_FILES([
     Makefile
-    testsuite/Makefile
     gander.spec
     include/Makefile
     dbgoutput.pc
 ])
+#    testsuite/Makefile
+#    tests/Makefile
+#    tests/package.m4
 
 AC_OUTPUT

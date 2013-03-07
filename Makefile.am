@@ -1,15 +1,13 @@
 
-
-# $Id: Makefile.am 571 2010-06-19 17:39:26Z length $
-
 AUTOMAKE_OPTIONS = dejagnu
 #AUTOMAKE_OPTIONS = gnu
 
-ACLOCAL_AMFLAGS	= -I .build ${ACLOCAL_FLAGS}
+ACLOCAL_AMFLAGS	= -I build ${ACLOCAL_FLAGS}
 
-SUBDIRS = testsuite include 
+SUBDIRS = include 
+#testsuite 
 
-AM_INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
+#AM_INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
 #LIBS		= $(GLIBMM_LIBS)
 
 bin_PROGRAMS   =  length
@@ -20,9 +18,16 @@ length_CXXFLAGS = -pthread $(GLIBMM_CFLAGS)
 length_LDADD    =  $(BOOST_PROGRAM_OPTIONS_LIB) $(GLIBMM_LIBS)
 length_LDFLAGS  = $(BOOST_LDFLAGS)
 
-#EXTRA_DIST	=  length.hpp
+bin_PROGRAMS += serial
+serial_SOURCES = serial.cpp
+serial_CPPFLAGS = @STDCXX_0X_CFLAGS@ @BOOST_CPPFLAGS@ @GLIBMM_CFLAGS@
+#serial_CXXFLAGS = -D_GLIBCXX_PROFILE @BOOST_CPPFLAGS@
+#serial_CFLAGS = @GSL_CFLAGS@
+serial_LDFLAGS  =  @GLIBMM_LIBS@
 
-DISTCLEANFILES =  .deps/*.Po
+#EXTRA_DIST	=  t1.txt
+
+DISTCLEANFILES =  .deps/*.Po tests/atconfig
 
 dist_bin_SCRIPTS	=	buildCtags
 BUILDCTAGSSOURCES	=	buildCtags.in
@@ -42,13 +47,12 @@ do_subst = sed -e 's,[@]datadir[@],$(datadir),g' \
            -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
            -e 's,[@]VERSION[@],$(VERSION),g'
 
- 
-
 # RPM generation steps.
 #rpmbuild --define="_prefix $(prefix)" --define="boost_path ${ac_boost_path}" -ba pword.spec
+#rpmbuild --sign --define="_prefix $(prefix)" --define="_boost_path ${BOOST_PATH}" -ba @PACKAGE_TARNAME@.spec
 rpm: distcheck dist
 	cp -p $(distdir).tar.gz @RPM_SOURCE_DIR@
-	rpmbuild --sign --define="_prefix $(prefix)" --define="_boost_path ${BOOST_PATH}" -ba @PACKAGE_TARNAME@.spec
+	rpmbuild --define="_prefix $(prefix)" --define="_boost_path ${BOOST_PATH}" -ba @PACKAGE_TARNAME@.spec
 
 
 #buildCtags: buildCtags.in Makefile
@@ -89,15 +93,18 @@ pkgconfig_DATA		= dbgoutput.pc
 #MYLOGIN_LIB = $(top_builddir)/libmylogin.la
 
 check_PROGRAMS	=	test_time_seed
-#check_SCRIPTS	=	buildCtags
+check_SCRIPTS	=	test_serial
 
-TESTS = $(check_PROGRAMS)
+TESTS = $(check_PROGRAMS) \
+		$(check_SCRIPTS)
 
 test_time_seed_SOURCES   =  test_time_seed.cpp 
 #general.hpp
 test_time_seed_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include \
 						  $(BOOST_CPPFLAGS) @STDCXX_0X_CFLAGS@ @DEBUG_CFLAGS@
 #test_time_seed_LDFLAGS = -lxerces-c
+
+TEST_SERIALSOURCES	=	test_serial.in
 
 #rm -fr t/
 #mkdir t && cd t/ && mkdir dtmpl.dir && \
@@ -157,6 +164,7 @@ test_time_seed_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include \
 # http://www.linuxfocus.org/English/November2003/article309.shtml#309lfindex7
 # Which is how the following was generated:
 #dist_man_MANS = test_tutorial.3
+
 
 
 

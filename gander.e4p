@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project gander -->
+<!-- Saved: 2012-10-09, 22:00:03 -->
+<!-- Copyright (C) 2012 Giles Anderson, agander@gmail.com -->
+<Project version="4.6">
+  <Language></Language>
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Console</ProjectType>
+  <Description>pexpect tests for autoconf/testsuite/autotest.</Description>
+  <Version>0.1</Version>
+  <Author>Giles Anderson</Author>
+  <Email>agander@gmail.com</Email>
+  <Sources>
+    <Source>pexp_tests.py</Source>
+    <Source>yumSearch.py</Source>
+    <Source>getCtagsDirs.py</Source>
+    <Source>length_exp.py</Source>
+    <Source>__init__.py</Source>
+  </Sources>
+  <Forms>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Resources>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <MainScript>pexp_tests.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+  </FiletypeAssociations>
+</Project>

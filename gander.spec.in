@@ -4,7 +4,7 @@ Name: @PACKAGE_TARNAME@
 Summary: General include files and C++ functions
 Group: Utilities
 Version: @VERSION@
-Release: @RELEASE@
+Release: @RELEASE@%{?dist}
 License: GPLv3
 #BuildHost: %{_hostname}
 
@@ -12,6 +12,7 @@ Source: @PACKAGE_TARNAME@-@VERSION@.tar.gz
 URL: git://agander/@PACKAGE_TARNAME@.git
 
 BuildRoot: %{_tmppath}/%{name}-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Prefix: %{_prefix}
 
 #Provides: %{name} = %{version}-%{release}
@@ -22,6 +23,7 @@ Various utility programs:
 - buildCtags: Create/update the vim ctags file from all include/ directories;
 - create_autoconf_skeleton: Create a autoconf/cmake project suitable for 
 KDevelop;
+- serial: Adds a sequence number to a stream of data.
 - dbgoutput.hpp: Provides a functiod for displaying messages during 
 development;
 - general.hpp: strtolong<>(): Templated functiod to convert strings to long.
@@ -34,46 +36,28 @@ development;
 #%configure --prefix %{_prefix} --with-boost 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
 %configure --prefix %{_prefix} --with-boost=%{_boost_path} 'PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"'
 #%configure @DISTCHECK_CONFIGURE_FLAGS@
-make LDFLAGS+="-Wl,--build-id"
-
-%check
-make check
+make LDFLAGS+="-Wl,--build-id" %{?_smp_mflags}
 
 %install
-%makeinstall LDFLAGS+="-Wl,--build-id"
+make DESTDIR=%{buildroot} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %_bindir/length
 %_bindir/buildCtags
 %_bindir/create_autoconf_skeleton
+%_bindir/serial
 %_includedir/dbgoutput.hpp
 %_includedir/general.hpp
-#%_includedir/@PACKAGE_TARNAME@/dbgoutput.hpp
-#%_includedir/@PACKAGE_TARNAME@/general.hpp
 %_libdir/pkgconfig/dbgoutput.pc
 
-#%files -n %{name}-devel
-#%defattr(-,root,root)
-#%_libdir/pkgconfig/libmylogin.pc
-#%_includedir/mylogin_class.hpp
+#%doc  ChangeLog COPYING INSTALL README
+#%docdir %{_prefix}/share/doc/%{name}/ChangeLog
+#%docdir %{_prefix}/share/doc/%{name}/COPYING
+#%docdir %{_prefix}/share/doc/%{name}/INSTALL
+#%docdir %{_prefix}/share/doc/%{name}/README
 
-#%doc AUTHORS ChangeLog COPYING INSTALL NEWS README
-%doc  ChangeLog COPYING INSTALL README
-##%_defaultdocdir %{_prefix}/share/doc/%{name}
-#%docdir %{_prefix}/share/doc/%{name}/AUTHORS
-%docdir %{_prefix}/share/doc/%{name}/ChangeLog
-%docdir %{_prefix}/share/doc/%{name}/COPYING
-%docdir %{_prefix}/share/doc/%{name}/INSTALL
-#%docdir %{_prefix}/share/doc/%{name}/NEWS
-%docdir %{_prefix}/share/doc/%{name}/README
-##%docdir %/AUTHORS
-##%docdir/ChangeLog
-##%docdir/COPYING
-##%docdir/INSTALL
-##%docdir/NEWS
-##%docdir/README
-
+%changelog

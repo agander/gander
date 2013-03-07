@@ -1,13 +1,17 @@
 set test "length"
 
-# Send a string to the length stdin:
-send "echo Hello world!\n"
+send_user "length \"Hello world!\""
+
 
 # Inspect length's stdout for 13 - the length of "Hello world!\n",
 # and determine whether the test passes or fails:
 expect {
-	-re "12"    { pass "Echo test" }
-	-re "^$"    { fail "Echo test" }
-    timeout     { fail "(timeout) Echo test" }
+    "^12$" {
+        # Send a string to the length stdin:
+        send "Hello world!\n"
+    }
+	#-re "12"    { pass "Echo $test" }
+	#-re "^$"    { fail "Echo $test" }
+    #timeout     { fail "(timeout) Echo $test" }
 }
 
