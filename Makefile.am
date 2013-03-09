@@ -35,8 +35,11 @@ BUILDCTAGSSOURCES	=	buildCtags.in
 dist_bin_SCRIPTS	+=	create_autoconf_skeleton
 CREATE_AUTOCONF_SKELETONSOURCES	= create_autoconf_skeleton.in
 
-#dist_bin_SCRIPTS	=	need_to_run_autoreconf
-#NEED_TO_RUN_AUTORECONFSOURCES = need_to_run_autoreconf.in
+dist_bin_SCRIPTS	+=	pipsql
+PIPSQLSOURCES	= pipsql.in
+
+dist_bin_SCRIPTS	+=	rerun_autoconf
+RERUN_AUTOCONFSOURCES = rerun_autoconf.in
 
 CLEANFILES = $(dist_bin_SCRIPTS)
 

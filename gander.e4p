@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project gander -->
-<!-- Saved: 2012-10-09, 22:00:03 -->
-<!-- Copyright (C) 2012 Giles Anderson, agander@gmail.com -->
+<!-- Saved: 2013-03-09, 20:25:18 -->
+<!-- Copyright (C) 2013 Giles Anderson, agander@gmail.com -->
 <Project version="4.6">
   <Language></Language>
   <ProgLanguage mixed="0">Python</ProgLanguage>
@@ -17,6 +17,8 @@
     <Source>getCtagsDirs.py</Source>
     <Source>length_exp.py</Source>
     <Source>__init__.py</Source>
+    <Source>rerun_autoconf.py</Source>
+    <Source>CalendarParser.py</Source>
   </Sources>
   <Forms>
   </Forms>

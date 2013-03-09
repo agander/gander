@@ -21,8 +21,9 @@ Prefix: %{_prefix}
 Various utility programs:
 - length: output the length of a string;
 - buildCtags: Create/update the vim ctags file from all include/ directories;
-- create_autoconf_skeleton: Create a autoconf/cmake project suitable for 
-KDevelop;
+- create_autoconf_skeleton: Create a autoconf/cmake project suitable for KDevelop.
+- pipsql: SQL access to PostGreSql DB thru' DBI.
+- rerun_autoconf: Returns true if Makefile.am or configure.ac is youger than configure or Makefile.
 - serial: Adds a sequence number to a stream of data.
 - dbgoutput.hpp: Provides a functiod for displaying messages during 
 development;
@@ -50,6 +51,8 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/buildCtags
 %_bindir/create_autoconf_skeleton
 %_bindir/serial
+%_bindir/pipsql
+%_bindir/rerun_autoconf
 %_includedir/dbgoutput.hpp
 %_includedir/general.hpp
 %_libdir/pkgconfig/dbgoutput.pc

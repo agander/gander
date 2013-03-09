@@ -1,0 +1,127 @@
+#!@PERL@ -w
+# -*- perl -*-
+
+#use diagnostics;
+use strict;
+use Carp;
+use DBI;
+use Getopt::Long;
+use warnings;
+
+my $VERSION="@VERSION@";
+
+sub fetchIt
+{
+   my $sth = shift;
+   my $print_col_names = shift;
+   my $oDelimiter = "";
+
+   if (exists($ENV{OUTPUT_DELIMITER}))
+   {
+      $oDelimiter = $ENV{OUTPUT_DELIMITER};
+   }
+   else
+   {
+      $oDelimiter = "|";
+   }
+
+   print join($oDelimiter, @{$sth->{NAME}}, "\n") if( $print_col_names );
+
+   while (my @col_data = $sth->fetchrow_array())
+   {
+
+      #print join($oDelimiter, @col_data), "$oDelimiter\n";
+      print join($oDelimiter, @col_data), $oDelimiter, "\n";
+
+   } 
+}
+
+croak "$0 --login <DB login string> --print_col_names --sql <SELECT ...>"
+    if ( ! (scalar(@ARGV < 6) && scalar(@ARGV > 3)));
+
+my $login_id = '';
+#chomp ($login_id);
+my $sql = '';
+my $print_col_names = '';
+
+GetOptions ('login=s' => \$login_id, 'print_col_names' => \$print_col_names, 'sql=s' => \$sql );
+
+
+my ($connect_string, $uid_pword, $dbh) = "";
+
+my ($instance, $host, $dbi, $user, $pword);
+
+($instance, $host)       = split /=/, $login_id;
+($instance, $dbi)       = split /#/, $instance;
+($uid_pword, $instance) = split /@/, $instance;
+($user, $pword) = split /\//, $uid_pword;
+
+$host='localhost' if( not $host );
+
+#print STDERR "$user/$pword\@$instance=$host\n";
+
+#($instance eq "Oracle") ? $connect_string = qq/dbi:$instance, $user, $pword/ 
+
+
+# MySQL connection
+if ($dbi =~ /mysql/i)
+{
+   $dbi= lc($dbi);
+   my $dsn="DBI:mysql:database=".$instance.";host=".$host;
+   $dbh=DBI->connect($dsn, $user, $pword, { RaiseError => 1, AutoCommit => 0, PrintError => 0 }) ||
+   die qq/*** error: cannot connect $user to $instance (DBI: $dbi): $!/ or die $DBI::errstr;
+   #$connect_string = qq/dbi:$dbi:dbname=$instance, $user, $pword/;
+}
+
+# PostGreSQL connection
+elsif ($dbi =~ /pg/i)
+{
+    $dbi= ucfirst($dbi);
+    my $dsn = "dbi:Pg:dbname=".$instance.";host=".$host;
+    #$dbh=DBI->connect('dbi:'.$dbi.':dbname='.$instance, $host, $user, $pword,
+    $dbh=DBI->connect($dsn, $user, $pword, { RaiseError => 0, AutoCommit => 0, PrintError => 0 }) || 
+        die qq/*** error: cannot connect $user to $instance (DBI: $dbi): $!/ or die $DBI::errstr;
+    #$connect_string = qq/dbi:$dbi:dbname=$instance, $user, $pword/;
+}
+
+# oracle connection
+elsif ($dbi =~ /oracle/i)
+{
+   $dbi= ucfirst($dbi);
+   $dbh=DBI->connect('dbi:'.$dbi.':sid='.$instance.';host=127.0.0.1',$user, $pword, { RaiseError => 1, AutoCommit => 0 }) || die qq/*** error: cannot connect $user to $instance (DBI: $dbi): $!/ or die $DBI::errstr;
+   #$connect_string = 'dbi:Oracle:sid='.$instance.';host=127.0.0.1'.','. $user.','. $pword;
+   #$connect_string = qq/dbi:$dbi:$instance, $user, $pword/;
+}
+else
+{
+   $connect_string = qq/dbi:$dbi:$instance, $user, $pword/;
+}
+
+
+
+my $sth = $dbh->prepare(qq#$sql#) or die $DBI::errstr;
+
+$sth->execute() or die $DBI::errstr;
+
+print STDERR $sth->rows, ($sth->rows != 1 ? " rows" : " row"), " processed\n";
+
+
+if ($sql =~ /^select/i)
+{
+   #print "First column name: $sth->{NAME}->[0]\n";
+   fetchIt $sth, $print_col_names;
+}
+
+$sth->finish or carp $DBI::errstr;
+$dbh->disconnect or carp $DBI::errstr;
+
+#my $sth = $dbh->prepare(q{INSERT INTO sales (product_code, qty, price) VALUES (?, ?, ?)}) or die $dbh->errstr;
+#while (<>)
+#{
+#  chomp;
+#  my ($product_code, $qty, $price) = split /,/;
+#  $sth->execute($product_code, $qty, $price) or die $dbh->errstr;
+#}
+
+#$dbh->commit or die $dbh->errstr;
+

@@ -27,6 +27,7 @@ AC_LANG_CPLUSPLUS
 
 AC_PATH_PROGS([BASH], [bash])
 AC_PATH_PROGS([PYTHON], [python])
+AC_PATH_PROGS([PERL], [perl])
 
 # Checks for header files.
 # Ensure that 'AC_LANG_CPLUSPLUS' is defined before these
@@ -110,7 +111,7 @@ if [ ! test "x$enable_debug" != "xyes"]; then
   AC_DEFINE([DEBUG], [1], [Define to enable debug build: '-gdwarf-4 -O0' and '-DDEBUG'])
   AC_SUBST([DEBUG_CFLAGS], [-DDEBUG])
   AC_SUBST([DEBUG_LIBS])
-  CXXFLAGS="-Wall -Wextra -gdwarf-4 -O0 -m64 -mtune=generic"
+  CXXFLAGS="-Wall -Wextra -gdwarf-4 -O0 -mtune=generic"
   AC_MSG_RESULT([yes])
 else
   AC_MSG_RESULT([no])
@@ -118,7 +119,7 @@ else
   DEBUG_LIBS=""
   AC_SUBST([DEBUG_CFLAGS])
   AC_SUBST([DEBUG_LIBS])
-  CXXFLAGS="-Wall -Wextra -O3 -m64 -mtune=generic"
+  CXXFLAGS="-Wall -Wextra -O3 -mtune=generic"
 fi
 
 AX_BOOST_BASE([1.47])
@@ -165,7 +166,8 @@ AC_SUBST([RPM_INSTALL_PREFIX0])
 
 AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
 AC_CONFIG_FILES([create_autoconf_skeleton], [chmod +x create_autoconf_skeleton])
-#AC_CONFIG_FILES([need_to_run_autoreconf], [chmod +x need_to_run_autoreconf])
+AC_CONFIG_FILES([rerun_autoconf], [chmod +x rerun_autoconf])
+AC_CONFIG_FILES([pipsql], [chmod +x pipsql])
 
 AC_CONFIG_FILES([test_serial], [chmod +x test_serial])
 

@@ -1,4 +1,15 @@
 
+2013-03-09 21:51 Giles Anderson<agander@gmail.com>
+* [0.0.7]:
+* i) Added pipsql.pl from fin/; ii) Added rerun_autoconf. This will check if
+* autoreconf needs to be rerun by checking if Makefile.am or configure.ac are
+* younger than Makefile/configure.
+* Also checks anything registered in AC_CONFIG_FILES.
+* RPM built successfully and upgraded to /usr/local.
+* TODO:
+* i) rpmbuild --sign didne work. Need to remedy;
+* ii) No debuginfo pkg.
+
 
 2013-03-07 21:47 Giles Anderson<agander@gmail.com>
 * [0.0.6]:
