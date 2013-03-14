@@ -1,4 +1,13 @@
 
+2013-03-14 20:32 Giles Anderson<agander@gmail.com>
+* [0.0.8]:
+* i) Working on rerun_autoconf. Using pyparsing.
+* Seems easier than Boost.Spirit so making progress.
+* TODO:
+* i) Will retire Python re from rerun_autoconf.py after this commit;
+*
+
+
 2013-03-09 21:51 Giles Anderson<agander@gmail.com>
 * [0.0.7]:
 * i) Added pipsql.pl from fin/; ii) Added rerun_autoconf. This will check if
@@ -56,6 +65,8 @@
 2010-10-24 10:37:57 +0100 Giles Anderson <agander@gmail.com>
 * [0.0.1]: Initial state for version: 
 * 1st version only secures ~/bin scripts.
+
+
 
 
 

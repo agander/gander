@@ -37,11 +37,8 @@ install_manifest.txt
 version.txt
 CMakeLists.txt.user
 CTestTestfile.cmake
-SciDB.cbp
 DartConfiguration.tcl
 CPackSourceConfig.cmake
-scidb_msg.pb.cc
-scidb_msg.pb.h
 CMakeScripts
 stamp-h1
 configure.scan

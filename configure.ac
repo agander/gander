@@ -168,6 +168,7 @@ AC_CONFIG_FILES([buildCtags], [chmod +x buildCtags])
 AC_CONFIG_FILES([create_autoconf_skeleton], [chmod +x create_autoconf_skeleton])
 AC_CONFIG_FILES([rerun_autoconf], [chmod +x rerun_autoconf])
 AC_CONFIG_FILES([pipsql], [chmod +x pipsql])
+AC_CONFIG_FILES([prep_pg_download], [chmod +x prep_pg_download])
 
 AC_CONFIG_FILES([test_serial], [chmod +x test_serial])
 

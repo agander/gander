@@ -16,6 +16,7 @@
 declare -i PASSED=0
 declare -i FAILED=0
 declare PROG_UNDER_TEST=serial
+declare DELIM=${OUTPUT_DELIMITER}
 
 declare PROJECT_NAME=""
 declare PROJECT_DIR=""
@@ -68,14 +69,35 @@ else
    unset EXEEXISTCOUNT
 fi
 
+#if [[ ${EXEEXISTCOUNT} -gt 0 ]]
+#then
+#    DELIM
+
 function tests()
 {
     #local -i RESULT
     #TMPFILE=$(mktemp)
+    # Test 1:
+    # Send 1 line, with '|' delimiter;
+    # Expect: (Number) 1 followed by ${OUTPUT_DELIMITER}, followed by '1|'
     OUTP=$(echo -e "1|" | ${PROG_UNDER_TEST}) # > ${TMPFILE}
     [[ -n "${DEBUG}" ]] && printf "OUTP=[%s]\n" "${OUTP}"
     #if [[ "${OUTP}" ~= "^1|1$" ]]
-    if [[ "${OUTP}" != "1|1|" ]]
+    if [[ "${OUTP}" != "1${OUTPUT_DELIMITER}1|" ]]
+    then
+        (( FAILED += 1 ))
+        printf "FAIL: %s not equal 1|1\n" "${OUTP}"
+    else
+        (( PASSED += 1 ))
+    fi
+
+    # Test 1:
+    # Send 1 line, with '|' delimiter;
+    # Expect: (Number) 1 followed by ${OUTPUT_DELIMITER}, followed by '1|'
+    OUTP=$(echo -e "1|\n2|" | ${PROG_UNDER_TEST})
+    [[ -n "${DEBUG}" ]] && printf "OUTP=[%s]\n" "${OUTP}"
+    #if [[ "${OUTP}" ~= "^1|1$" ]]
+    if [[ "${OUTP}" != "1${OUTPUT_DELIMITER}1|" ]]
     then
         (( FAILED += 1 ))
         printf "FAIL: %s not equal 1|1\n" "${OUTP}"

@@ -1,5 +1,6 @@
-#!/usr/bin/env /usr/bin/python
+#!@PYTHON@
 # -*- coding: utf-8 -*-
+
 
 """
     Checks whether autoconf needs rerunning.

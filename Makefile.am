@@ -27,7 +27,8 @@ serial_LDFLAGS  =  @GLIBMM_LIBS@
 
 #EXTRA_DIST	=  t1.txt
 
-DISTCLEANFILES =  .deps/*.Po tests/atconfig
+DISTCLEANFILES =  .deps/*.Po tests/atconfig 
+
 
 dist_bin_SCRIPTS	=	buildCtags
 BUILDCTAGSSOURCES	=	buildCtags.in
@@ -40,6 +41,9 @@ PIPSQLSOURCES	= pipsql.in
 
 dist_bin_SCRIPTS	+=	rerun_autoconf
 RERUN_AUTOCONFSOURCES = rerun_autoconf.in
+
+dist_bin_SCRIPTS	+=	prep_pg_download
+LOAD_PG_DOWNLOADSOURCES = prep_pg_download.in
 
 CLEANFILES = $(dist_bin_SCRIPTS)
 

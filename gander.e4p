@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project gander -->
-<!-- Saved: 2013-03-09, 20:25:18 -->
+<!-- Saved: 2013-03-14, 20:30:22 -->
 <!-- Copyright (C) 2013 Giles Anderson, agander@gmail.com -->
 <Project version="4.6">
   <Language></Language>
   <ProgLanguage mixed="0">Python</ProgLanguage>
   <ProjectType>Console</ProjectType>
-  <Description>pexpect tests for autoconf/testsuite/autotest.</Description>
+  <Description>pexpect.py tests for autoconf/testsuite/autotest. rerun_autoconf.py: Looks for main autoconf files; Makefile.am, confogire.ac &amp; anything in AC_CONFIG_FILES([])</Description>
   <Version>0.1</Version>
   <Author>Giles Anderson</Author>
   <Email>agander@gmail.com</Email>
@@ -19,6 +19,7 @@
     <Source>__init__.py</Source>
     <Source>rerun_autoconf.py</Source>
     <Source>CalendarParser.py</Source>
+    <Source>prep_insert_statement.py</Source>
   </Sources>
   <Forms>
   </Forms>
@@ -30,7 +31,7 @@
   </Interfaces>
   <Others>
   </Others>
-  <MainScript>pexp_tests.py</MainScript>
+  <MainScript>rerun_autoconf.py</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>

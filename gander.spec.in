@@ -25,6 +25,7 @@ Various utility programs:
 - pipsql: SQL access to PostGreSql DB thru' DBI.
 - rerun_autoconf: Returns true if Makefile.am or configure.ac is youger than configure or Makefile.
 - serial: Adds a sequence number to a stream of data.
+- prep_pg_download: Prepare SQL staetments for Pg insert from a bank csv file.
 - dbgoutput.hpp: Provides a functiod for displaying messages during 
 development;
 - general.hpp: strtolong<>(): Templated functiod to convert strings to long.
@@ -53,6 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/serial
 %_bindir/pipsql
 %_bindir/rerun_autoconf
+%_bindir/prep_pg_download
 %_includedir/dbgoutput.hpp
 %_includedir/general.hpp
 %_libdir/pkgconfig/dbgoutput.pc
